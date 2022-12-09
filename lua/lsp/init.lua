@@ -20,19 +20,30 @@ function M.common_capabilities()
     return cmp_nvim_lsp.default_capabilities()
   end
 
-  vim.api.nvim_echo({
-    {'WARNING: common_capabilities'},
-    {'cmp_nvim_lsp get failed'} }, false, {})
-  -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-  -- capabilities.textDocument.completion.completionItem.snippetSupport = true
-  -- capabilities.textDocument.completion.completionItem.resolveSupport = {
-  --   properties = {
-  --     "documentation",
-  --     "detail",
-  --     "additionalTextEdits",
-  --   },
-  -- }
-  -- return capabilities
+  -- vim.api.nvim_echo({
+  --   {'WARNING: common_capabilities'},
+  --   {'cmp_nvim_lsp get failed'} }, false, {})
+
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+  capabilities.textDocument.completion.completionItem = {
+    documentationFormat = { "markdown", "plaintext" },
+    snippetSupport = true,
+    preselectSupport = true,
+    insertReplaceSupport = true,
+    labelDetailsSupport = true,
+    deprecatedSupport = true,
+    commitCharactersSupport = true,
+    tagSupport = { valueSet = { 1 } },
+    resolveSupport = {
+      properties = {
+        "documentation",
+        "detail",
+        "additionalTextEdits",
+      },
+    },
+  }
+  return capabilities
 end
 
 

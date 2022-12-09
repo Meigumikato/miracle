@@ -232,9 +232,9 @@ M.options = {
     { name = "luasnip" },
     { name = "nvim_lsp" },
     { name = 'nvim_lsp_signature_help' },
-    { name = 'treesitter' },
-    { name = "buffer" },
     { name = "nvim_lua" },
+    { name = "buffer" },
+    { name = 'treesitter' },
     { name = "path" },
   },
 }

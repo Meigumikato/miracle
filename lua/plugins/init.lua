@@ -5,7 +5,6 @@ function M.plugin_install(need_sync)
     use { 'lewis6991/impatient.nvim' }
     use { 'wbthomason/packer.nvim' }
     use { 'nvim-tree/nvim-web-devicons' }
-    use { 'ellisonleao/gruvbox.nvim' }
     use {
       'folke/tokyonight.nvim',
       config = function ()
@@ -105,7 +104,11 @@ function M.plugin_install(need_sync)
 
     use {
       'neovim/nvim-lspconfig',
+      opt = true,
       ft = { 'lua', 'c', 'cpp' },
+      setup = function ()
+        require('core.lazy_load').on_file_open 'nvim-lspconfig'
+      end,
       config = function()
         require('lsp')
       end,
@@ -113,12 +116,12 @@ function M.plugin_install(need_sync)
 
     use {
       'nvim-tree/nvim-tree.lua',
-      config = function()
-        require('plugins.nvimtree').setup()
-      end,
       requires = {
         'nvim-tree/nvim-web-devicons'
       },
+      config = function()
+        require('plugins.nvimtree').setup()
+      end,
     }
 
     use { 'nvim-treesitter/nvim-treesitter-textobjects' }
@@ -133,17 +136,34 @@ function M.plugin_install(need_sync)
 
     use {
       'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
-      'saadparwaiz1/cmp_luasnip',
+      after = 'cmp-nvim-lua'
     }
 
+    use {
+      'hrsh7th/cmp-buffer',
+      after = 'cmp-nvim-lsp'
+    }
+    use {
+      'hrsh7th/cmp-path',
+      after = 'cmp-buffer',
+    }
+    use {
+      'hrsh7th/cmp-nvim-lua',
+      after = 'cmp_luasnip',
+    }
+    use {
+      'saadparwaiz1/cmp_luasnip',
+      after = 'LuaSnip',
+    }
 
-    use { 'rafamadriz/friendly-snippets' }
+    use {
+      'rafamadriz/friendly-snippets',
+      event = "InsertEnter",
+    }
 
     use {
       'L3MON4D3/LuaSnip',
+      after = 'nvim-cmp',
       config = function ()
         require('plugins.luasnippet').setup()
       end
@@ -151,6 +171,7 @@ function M.plugin_install(need_sync)
 
     use {
       'hrsh7th/nvim-cmp',
+      after = 'friendly-snippets',
       config = function()
         require('plugins.cmp').setup()
       end
