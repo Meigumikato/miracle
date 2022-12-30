@@ -1,7 +1,7 @@
 local M = {}
 
 local icons = require('core.icons')
-local navic = require('nvim-navic')
+-- local navic = require('nvim-navic')
 
 local function diff_source()
   local gitsigns = vim.b.gitsigns_status_dict
@@ -257,8 +257,8 @@ M.options = {
     lualine_b = {},
     lualine_c = {
       -- 'filetype',
-      M.filename,
-      { navic.get_location, cond = navic.is_avaiable }
+      -- M.filename,
+      -- { navic.get_location, cond = navic.is_avaiable }
     },
     lualine_x = {},
     lualine_y = {},
@@ -272,15 +272,15 @@ M.options = {
       -- M.filetype,
     },
     lualine_c = {
-      M.filename,
-      { navic.get_location, cond = navic.is_avaiable }
+      -- M.filename,
+      -- { navic.get_location, cond = navic.is_avaiable }
     },
     lualine_x = {},
     lualine_y = {},
     lualine_z = {}
 
   },
-  extensions = {'nvim-tree'}
+  extensions = { 'nvim-tree' }
 }
 
 

@@ -37,6 +37,7 @@ M.options = {
 }
 
 function M.setup()
+  vim.cmd [[ colorscheme tokyonight-night ]]
   require('tokyonight').setup(M.options)
 end
 

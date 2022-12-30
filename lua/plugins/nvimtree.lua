@@ -1,9 +1,12 @@
-local M = {}
+local persent, nvimtree = pcall(require, 'nvim-tree')
+if not persent then
+  return
+end
+
 local icons = require('core.icons')
-local utils = require('core.utils')
+-- local utils = require('core.utils')
 
-
-M.options =  { -- BEGIN_DEFAULT_OPTS
+local options =  { -- BEGIN_DEFAULT_OPTS
   auto_reload_on_write = false,
   create_in_closed_folder = false,
   disable_netrw = false,
@@ -172,9 +175,8 @@ M.options =  { -- BEGIN_DEFAULT_OPTS
   },
 }
 
-function M.setup()
-  require('nvim-tree').setup(M.options)
-  utils.load_mapping('nvimtree')
-end
+-- function M.setup()
+nvimtree.setup(options)
+-- end
 
-return M
+-- return M

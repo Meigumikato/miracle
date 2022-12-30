@@ -8,9 +8,9 @@ function M.common_on_attach(client, bufnr)
   -- load lsp key map
   utils.load_mapping('lspconfig', { buffer = bufnr })
   -- winbar config
-  if client.server_capabilities.documentSymbolProvider then
-      require('nvim-navic').attach(client, bufnr)
-  end
+  -- if client.server_capabilities.documentSymbolProvider then
+  --     require('nvim-navic').attach(client, bufnr)
+  -- end
 end
 
 function M.common_capabilities()
@@ -88,7 +88,7 @@ lspconfig.sumneko_lua.setup {
           -- vim.api.nvim_get_runtime_file("", true),
           vim.fn.expand "$VIMRUNTIME/lua",
           vim.fn.expand "$VIMRUNTIME/lua/vim/lsp",
-          require('neodev.config').types(),
+          -- require('neodev.config').types(),
           '${3rd}/busted/library',
           '${3rd}/luassert/library',
         },
