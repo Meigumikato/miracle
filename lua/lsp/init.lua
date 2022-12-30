@@ -6,7 +6,7 @@ local lspconfig = require('lspconfig')
 
 function M.common_on_attach(client, bufnr)
   -- load lsp key map
-  utils.load_mapping('lspconfig', { buffer = bufnr })
+  -- utils.load_mapping('lspconfig', { buffer = bufnr })
   -- winbar config
   -- if client.server_capabilities.documentSymbolProvider then
   --     require('nvim-navic').attach(client, bufnr)
@@ -46,7 +46,6 @@ function M.common_capabilities()
   return capabilities
 end
 
-
 local diagnostics_signs = {
   Error = icons.diagnostics.BoldError,
   Warn = icons.diagnostics.BoldWarning,
@@ -80,7 +79,7 @@ lspconfig.sumneko_lua.setup {
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
+        globals = { 'vim' },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files

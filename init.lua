@@ -1,5 +1,5 @@
 require('core')
-require('core.utils').load_mapping('basic')
+-- require('core.utils').load_mapping('basic')
 
 -- local fn = vim.fn
 -- local install_path = fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
@@ -11,4 +11,3 @@ require('core.utils').load_mapping('basic')
 -- require "plugins"
 -- vim.cmd "PackerSync"
 require("plugins").load_config()
-

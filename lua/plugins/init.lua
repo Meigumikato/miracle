@@ -9,26 +9,26 @@ M.plugin_list = {
 
   -- ['wbthomason/packer.nvim'] = {
   --   opt = true
-    -- cmd = require('core.lazy_load').packer_cmds,
-    -- config = function ()
-    --   require('plugins').load_config()
-    -- end
+  -- cmd = require('core.lazy_load').packer_cmds,
+  -- config = function ()
+  --   require('plugins').load_config()
+  -- end
   -- },
   -- ['lewis6991/impatient.nvim'] = { },
   -- ['folke/neodev.nvim']  = {},
 
-  ['folke/tokyonight.nvim'] = {
-    config = function ()
-      require('plugins.tokyonight').setup()
-    end
-  },
+  -- ['folke/tokyonight.nvim'] = {
+  --   config = function()
+  --     require('plugins.tokyonight').setup()
+  --   end
+  -- },
 
-  ["kylechui/nvim-surround"] = {
-    event = { 'BufReadPost' },
-    config = function()
-      require("nvim-surround").setup()
-    end,
-  },
+  -- ["kylechui/nvim-surround"] = {
+  --   event = { 'BufReadPost' },
+  --   config = function()
+  --     require("nvim-surround").setup()
+  --   end,
+  -- },
 
   --  ['goolord/alpha-nvim'] = {
   --    config = function ()
@@ -36,76 +36,76 @@ M.plugin_list = {
   --    end
   --  },
 
-  ["williamboman/mason-lspconfig.nvim"] = {
-    cmd = { 'LspInstall', 'LspUnistall' },
-    config = function()
-      require('mason-lspconfig').setup {
-        ensure_installed = {
-          'sumneko_lua',
-          'rust_analyzer',
-          'clangd'
-        },
-      }
-    end,
-  },
+  -- ["williamboman/mason-lspconfig.nvim"] = {
+  --   cmd = { 'LspInstall', 'LspUnistall' },
+  --   config = function()
+  --     require('mason-lspconfig').setup {
+  --       ensure_installed = {
+  --         'sumneko_lua',
+  --         'rust_analyzer',
+  --         'clangd'
+  --       },
+  --     }
+  --   end,
+  -- },
 
-  ["williamboman/mason.nvim"] = {
-    cmd = require('core.lazy_load').mason_cmds,
-    config = function()
-      require('mason').setup()
-    end,
-  },
+  -- ["williamboman/mason.nvim"] = {
+  --   cmd = require('core.lazy_load').mason_cmds,
+  --   config = function()
+  --     require('mason').setup()
+  --   end,
+  -- },
 
-   -- ['lewis6991/gitsigns.nvim'] = {
-   --   ft = 'gitcommit',
-   --   tag = 'v0.5',
-   --   setup = function ()
-   --    require('core.lazy_load').gitsigns()
-   --   end,
-   --   config = function ()
-   --     require('plugins.gitsigns').setup()
-   --   end
-   -- },
+  -- ['lewis6991/gitsigns.nvim'] = {
+  --   ft = 'gitcommit',
+  --   tag = 'v0.5',
+  --   setup = function ()
+  --    require('core.lazy_load').gitsigns()
+  --   end,
+  --   config = function ()
+  --     require('plugins.gitsigns').setup()
+  --   end
+  -- },
 
-   -- ["windwp/nvim-autopairs"] = {
-   --   config = function()
-   --     require("nvim-autopairs").setup({})
-   --   end
-   -- },
+  -- ["windwp/nvim-autopairs"] = {
+  --   config = function()
+  --     require("nvim-autopairs").setup({})
+  --   end
+  -- },
 
-   -- ['lukas-reineke/indent-blankline.nvim'] = {
-   --   opt = true,
-   --   setup = function ()
-   --    require('core.lazy_load').on_file_open 'indent-blankline.nvim'
-   --   end,
-   --   config = function ()
-   --    require('plugins.indentlines').setup()
-   --   end
-   -- },
+  -- ['lukas-reineke/indent-blankline.nvim'] = {
+  --   opt = true,
+  --   setup = function ()
+  --    require('core.lazy_load').on_file_open 'indent-blankline.nvim'
+  --   end,
+  --   config = function ()
+  --    require('plugins.indentlines').setup()
+  --   end
+  -- },
 
 
-   -- ["folke/todo-comments.nvim"] = {
-   --   requires = "nvim-lua/plenary.nvim",
-   --   config = function()
-   --     require("todo-comments").setup {
-   --     }
-   --   end
-   -- },
+  -- ["folke/todo-comments.nvim"] = {
+  --   requires = "nvim-lua/plenary.nvim",
+  --   config = function()
+  --     require("todo-comments").setup {
+  --     }
+  --   end
+  -- },
 
-   ["folke/which-key.nvim"] = {
-     -- module = 'which-key',
-     keys = { '<leader>', '"', "'", "`" },
-     config = function()
-       require("plugins.whichkey")
-     end,
-   },
+  -- ["folke/which-key.nvim"] = {
+  --   -- module = 'which-key',
+  --   keys = { '<leader>', '"', "'", "`" },
+  --   config = function()
+  --     require("plugins.whichkey")
+  --   end,
+  -- },
 
-   -- ['mrjones2014/legendary.nvim'] = {
-   --  tag = 'v2.1.0',
-   --  config = function ()
-   --    require("plugins.legendary")
-   --  end
-   -- },
+  -- ['mrjones2014/legendary.nvim'] = {
+  --  tag = 'v2.1.0',
+  --  config = function ()
+  --    require("plugins.legendary")
+  --  end
+  -- },
 
 
   --  -- ["folke/persistence.nvim"] = {
@@ -116,39 +116,25 @@ M.plugin_list = {
   --  --   end,
   --  -- },
 
-   ['neovim/nvim-lspconfig'] = {
-     ft = { 'lua', 'c', 'cpp' },
-     -- setup = function ()
-     --   require('core.lazy_load').on_file_open 'nvim-lspconfig'
-     -- end,
-     config = function()
-       require('lsp')
-     end,
-   },
+  -- ['neovim/nvim-lspconfig'] = {
+  --   ft = { 'lua', 'c', 'cpp' },
+  --   -- setup = function ()
+  --   --   require('core.lazy_load').on_file_open 'nvim-lspconfig'
+  --   -- end,
+  --   config = function()
+  --     require('lsp')
+  --   end,
+  -- },
 
-   -- ['nvim-tree/nvim-tree.lua'] = {
-   --   cmd = { 'NvimTreeToggle', 'NvimTreeFocus' },
-   --   dependencies = { 'nvim-tree/nvim-web-devicons' },
-   --   config = function()
-   --     require('plugins.nvimtree')
-   --   end,
-   -- },
+  -- ['nvim-tree/nvim-tree.lua'] = {
+  --   cmd = { 'NvimTreeToggle', 'NvimTreeFocus' },
+  --   dependencies = { 'nvim-tree/nvim-web-devicons' },
+  --   config = function()
+  --     require('plugins.nvimtree')
+  --   end,
+  -- },
 
 
-   -- ['nvim-treesitter/nvim-treesitter'] = {
-   --   module = 'nvim-treesitter',
-   --   setup = function ()
-   --     require('core.lazy_load').on_file_open 'nvim-treesitter'
-   --   end,
-   --   cmd = require('core.lazy_load').treesitter_cmds,
-   --   run = ":TSUpdate",
-   --   config = function()
-   --     require('plugins.treesitter').setup()
-   --   end,
-   -- },
-   -- ['nvim-treesitter/nvim-treesitter-textobjects'] = {
-   --    after = "nvim-treesitter"
-   -- },
 
   --  ['hrsh7th/cmp-nvim-lsp'] = {
   --    after = 'cmp-nvim-lua'
@@ -186,13 +172,6 @@ M.plugin_list = {
   --  },
 
 
-   -- ['nvim-lualine/lualine.nvim'] = {
-   --   bufread = true,
-   --   requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-   --   config = function()
-   --     require('plugins.lualine').setup()
-   --   end,
-   -- },
 
   --  ['numToStr/Comment.nvim'] = {
   --    module = 'Comment',
@@ -264,7 +243,7 @@ M.plugin_list = {
 
 
 
-local function load_lazy ()
+local function load_lazy()
   -- local is_first_installed = false
 
   if not vim.loop.fs_stat(lazypath) then
@@ -289,9 +268,9 @@ local function load_lazy ()
   -- return is_first_installed
 end
 
-local function convert_plugin_list()
+local function convert_plugin_list(plugins)
   local res = {}
-  for key, config in pairs(M.plugin_list) do
+  for key, config in pairs(plugins) do
     config[1] = key
     res[#res + 1] = config
   end
@@ -299,8 +278,6 @@ local function convert_plugin_list()
 
   return res
 end
-
-
 
 -- local function packer_startup_func (use)
 --   for plugin, config in pairs(M.plugin_list) do
@@ -313,14 +290,20 @@ function M:load_config()
   load_lazy()
 
 
-  local startup_plugin_list = convert_plugin_list()
+  local modules_plugins = require('modules').plugins
+
+  -- vim.pretty_print(modules_plugins)
+
+  local startup_plugin_list = convert_plugin_list(modules_plugins)
+
+  -- vim.pretty_print(startup_plugin_list)
 
   require('lazy').setup(startup_plugin_list)
 
 
   -- if is_packer_first_installed == true then
-    -- vim.pretty_print("is_first_installed packer sync")
-    -- packer.sync() -- sync and compile
+  -- vim.pretty_print("is_first_installed packer sync")
+  -- packer.sync() -- sync and compile
   -- end
 
 

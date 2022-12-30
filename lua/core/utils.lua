@@ -13,7 +13,7 @@ function M.load_mapping(section, map_opts)
 
     for mode, mode_values in pairs(section_values) do
       -- merge table for options
-      local default_opts = merge_tb("force", { mode = mode }, map_opts or {} )
+      local default_opts = merge_tb("force", { mode = mode }, map_opts or {})
 
       for keybind, mapping_info in pairs(mode_values) do
         local opts = merge_tb('force', default_opts, mapping_info.opts or {})
@@ -31,11 +31,11 @@ function M.load_mapping(section, map_opts)
     mappings = { mappings[section] }
   end
 
+  vim.pretty_print('load_mapping')
   for _, sect in pairs(mappings) do
     set_section_map(sect)
   end
 
 end
-
 
 return M

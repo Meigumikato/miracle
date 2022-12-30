@@ -1,4 +1,13 @@
 local M = {
+  ['nvim-treesitter/nvim-treesitter'] = {
+    cmd = require('core.lazy_load').treesitter_cmds,
+    event = "BufReadPost",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+    },
+    build = ":TSUpdate",
+    config = require('modules.tools.config.treesitter')
+  },
 
   ["kylechui/nvim-surround"] = {
     event = { 'BufReadPost' },
@@ -7,45 +16,24 @@ local M = {
     end,
   },
 
-  ["nvim-telescope/telescope-project.nvim" ] = {
-    lazy = true,
-    config = function()
-    end,
-  },
-
-  ['nvim-telescope/telescope-fzf-native.nvim'] = {
-    lazy = true,
-    build = 'make',
-    configa = function()
-    end
-  },
-
-  ["nvim-telescope/telescope-file-browser.nvim"] = {
-    lazy = true,
-    config = function()
-    end
-  },
-
-
   ['nvim-telescope/telescope.nvim'] = {
     tag = '0.1.0',
-    -- module = "telescope",
     cmd = { "Telescope" },
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('plugins.telescope')
-    end,
-    -- after = {
-    --   'telescope-fzf-native.nvim',
-      -- 'telescope-file-browser.nvim',
-    -- }
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-project.nvim',
+      'nvim-telescope/telescope-file-browser.nvim',
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make"
+      },
+    },
+    config = require('modules.tools.config.telescope')
   },
 
   ["folke/which-key.nvim"] = {
     keys = { '<leader>', '"', "'", "`" },
-    config = function()
-      require("plugins.whichkey")
-    end,
+    config = require("modules.tools.config").whichkey,
   },
 
   ["williamboman/mason-lspconfig.nvim"] = {
