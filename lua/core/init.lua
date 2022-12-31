@@ -27,3 +27,4 @@ vim.env.PATH = vim.env.PATH .. (is_windows and ";" or ":") .. vim.fn.stdpath "da
 -- })
 
 require('core.options')
+require('core.autocmds')

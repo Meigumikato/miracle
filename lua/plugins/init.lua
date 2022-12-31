@@ -285,10 +285,28 @@ end
 --     use(config)
 --   end
 -- end
+local lazy_options = {
+  performance = {
+    defaults = { lazy = true, version = "*" },
+    install = { colorscheme = { "tokyonight", "habamax" } },
+    checker = { enabled = true },
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
+}
 
 function M:load_config()
   load_lazy()
-
 
   local modules_plugins = require('modules').plugins
 
@@ -298,7 +316,7 @@ function M:load_config()
 
   -- vim.pretty_print(startup_plugin_list)
 
-  require('lazy').setup(startup_plugin_list)
+  require('lazy').setup(startup_plugin_list, lazy_options)
 
 
   -- if is_packer_first_installed == true then

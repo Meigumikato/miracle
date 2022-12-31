@@ -1,21 +1,4 @@
 local M = {
-  ['nvim-treesitter/nvim-treesitter'] = {
-    cmd = require('core.lazy_load').treesitter_cmds,
-    event = "BufReadPost",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-    },
-    build = ":TSUpdate",
-    config = require('modules.tools.config.treesitter')
-  },
-
-  ["kylechui/nvim-surround"] = {
-    event = { 'BufReadPost' },
-    config = function()
-      require("nvim-surround").setup()
-    end,
-  },
-
   ['nvim-telescope/telescope.nvim'] = {
     tag = '0.1.0',
     cmd = { "Telescope" },
@@ -32,8 +15,15 @@ local M = {
   },
 
   ["folke/which-key.nvim"] = {
-    keys = { '<leader>', '"', "'", "`" },
-    config = require("modules.tools.config").whichkey,
+    event = "VeryLazy",
+    dependencies = {
+      'mrjones2014/legendary.nvim'
+    },
+    config = require("modules.tools.config.whichkey"),
+  },
+  ['mrjones2014/legendary.nvim'] = {
+    event = "VeryLazy",
+    config = require("modules.tools.config.legendary"),
   },
 
   ["williamboman/mason-lspconfig.nvim"] = {
@@ -55,6 +45,15 @@ local M = {
       require('mason').setup()
     end,
   },
+
+  ['rcarriga/nvim-notify'] = {
+    config = function ()
+      vim.notify = require("notify")
+    end
+  },
+  ['jose-elias-alvarez/null-ls.nvim'] = {
+    lazy = true,
+  }
 }
 
 return M

@@ -1,6 +1,7 @@
 local M = {
 
   ['glepnir/dashboard-nvim'] = {
+    event = "BufWinEnter",
     config = require('modules.ui.config.dashboard'),
   },
 
@@ -30,9 +31,56 @@ local M = {
 
   ['nvim-lualine/lualine.nvim'] = {
     event = { "BufReadPost" },
-    -- dependencies = { 'kyazdani42/nvim-web-devicons' },
+    dependencies = { 'kyazdani42/nvim-web-devicons' },
     config = require('modules.ui.config.lualine')
   },
+
+  ['folke/lsp-colors.nvim'] = {
+    event = 'LspAttach',
+    config = function ()
+      require("lsp-colors").setup({
+        Error = "#db4b4b",
+        Warning = "#e0af68",
+        Information = "#0db9d7",
+        Hint = "#10B981"
+      })
+    end
+  },
+
+  ['j-hui/fidget.nvim'] = {
+    event = 'LspAttach',
+    config = function ()
+      require('fidget').setup()
+    end
+  },
+
+  ['simrat39/symbols-outline.nvim'] = {
+    cmd = {'SymbolsOutline'},
+    config = function ()
+      require("symbols-outline").setup()
+    end
+  },
+
+  ["stevearc/dressing.nvim"] = {
+    config = require('modules.ui.config.dressing'),
+  },
+
+  -- ["utilyre/barbecue.nvim"] = {
+  --   -- event = 'LspAttach',
+  --   branch = "dev", -- omit this if you only want stable updates
+  --   dependencies = {
+  --     "neovim/nvim-lspconfig",
+  --     "smiteshp/nvim-navic",
+  --     "kyazdani42/nvim-web-devicons", -- optional dependency
+  --   },
+  --   config = function ()
+  --     require("barbecue").setup {
+  --       -- attach_navic = true,
+  --       -- create_autocmd = false,
+  --       -- exclude_filetypes = { "toggleterm", "dashboard", "quickfix", "nvimtree" },
+  --     }
+  --   end
+  -- }
 }
 
 

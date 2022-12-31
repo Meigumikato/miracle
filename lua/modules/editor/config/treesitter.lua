@@ -1,5 +1,5 @@
 local options = {
-  ensure_installed = { 'lua', 'c', 'cpp', 'rust' },
+  ensure_installed = { 'lua', 'c', 'cpp', 'rust', 'json', 'vim', 'go' },
   sync_install = false,
   auto_install = false,
   highlight = {
@@ -40,8 +40,17 @@ local options = {
       -- and should return true of false
       include_surrounding_whitespace = true,
     },
+  },
+  rainbow = {
+    enable = true,
+    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    -- colors = {}, -- table of hex strings
+    -- termcolors = {} -- table of colour name strings
   }
 }
+
 local function config()
   local treesitter_config = require('nvim-treesitter.configs')
   treesitter_config.setup(options)

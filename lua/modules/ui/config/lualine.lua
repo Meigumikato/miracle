@@ -263,7 +263,7 @@ local options = {
     lualine_z = {}
 
   },
-  extensions = { 'nvim-tree' }
+  extensions = { 'nvim-tree', 'quickfix', 'symbols-outline', 'toggleterm' }
 }
 -- M.filename = {
 --   function()

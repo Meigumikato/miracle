@@ -6,7 +6,9 @@ local function config()
 
   require('luasnip').config.set_config(options)
 
+  require("luasnip.loaders.from_lua").lazy_load()
   require('luasnip.loaders.from_vscode').lazy_load()
+  require("luasnip.loaders.from_snipmate").lazy_load()
   -- vim.api.nvim_create_autocmd("InsertLeave", {
   --   callback = function()
   --     if

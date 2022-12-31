@@ -31,7 +31,7 @@ function M.load_mapping(section, map_opts)
     mappings = { mappings[section] }
   end
 
-  vim.pretty_print('load_mapping')
+  -- vim.pretty_print('load_mapping')
   for _, sect in pairs(mappings) do
     set_section_map(sect)
   end

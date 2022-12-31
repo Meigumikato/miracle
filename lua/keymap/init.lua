@@ -6,19 +6,24 @@ M.nmap = {
   ['<C-j>'] = { '<C-w>j', "switch to down", noremap = true, silent = true },
   ['<C-k>'] = { '<C-w>k', "switch to up", noremap = true, silent = true },
 
-  ['gd'] = { '<cmd>Lspsaga peek_definition<cr>', "peek definition", silent = true },
-  ["[e"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "next diagnostics", silent = true },
-  ["e]"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "prev diagnostics", silent = true },
+  -- ['gd'] = { '<cmd>Lspsaga peek_definition<cr>', "peek definition", silent = true },
+  -- ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "next diagnostics", silent = true },
+  -- ["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "prev diagnostics", silent = true },
 
-  ["K"] = { "<cmd>Lspsaga hover_doc<CR>", "hover doc", silent = true },
+  -- ["K"] = { "<cmd>Lspsaga hover_doc<CR>", "hover doc", silent = true },
   ["<leader>"] = {
     b = {
       name = "+buffer",
-      l = { "<cmd>BufferLineCycleNext<cr>", "Goto Next Buffer" },
-      h = { "<cmd>BufferLineCyclePrev<cr>", "Goto Prev Buffer" },
-      d = { "<cmd>bd<cr>", "Close Current Buffer" },
-      s = { "<cmd>BufferLinePick<cr>", "Pick Buffer" },
-      p = { "<cmd>BufferLineTogglePin<cr>", "Pin Current Buffer" },
+      l = { "<cmd>BufferLineCycleNext<cr>", "Goto Next Buffer", silent = true },
+      h = { "<cmd>BufferLineCyclePrev<cr>", "Goto Prev Buffer", silent = true },
+      d = { "<cmd>bd<cr>", "Close Current Buffer", silent = true },
+      s = { "<cmd>BufferLinePick<cr>", "Pick Buffer", silent = true },
+      p = { "<cmd>BufferLineTogglePin<cr>", "Pin Current Buffer", silent = true },
+    },
+
+    c = {
+      name = "+code",
+      a = { "<cmd>Lspsaga code_action<CR>", "Code Action", silent = true },
     },
 
     f = {
@@ -31,7 +36,9 @@ M.nmap = {
     },
     o = {
       name = "+open",
-      e = { "<cmd>NvimTreeToggle<cr>", "toggle nvimtree" }
+      e = { "<cmd>NvimTreeToggle<cr>", "toggle nvimtree" },
+      -- t = { "<cmd>Lspsaga open_floaterm<CR>", "open floaterm", silent = true },
+      -- g = { "<cmd>Lspsaga open_floaterm lazygit<CR>", "open lazygit", silent = true },
     },
 
     h = {
@@ -42,18 +49,24 @@ M.nmap = {
           "<cmd>Lazy<cr>", "lazy"
         },
       },
+      k = { "<cmd>Legendary keymaps<cr>", "search keymaps", silent = true },
     },
     m = {
       name = "+lsp mode",
-      r = { '<cmd>Lspsaga rename<cr>', "lsp rename", silent = true },
-      o = { "<cmd>LSoutlineToggle<CR>", "lsp outline", silent = true },
+      -- r = { '<cmd>Lspsaga rename<cr>', "lsp rename", silent = true },
+      o = { "<cmd>SymbolsOutline<cr>", "code outline", silent = true },
       d = {
         name = "+lsp diagnostics",
-        c = { "<cmd>Lspsaga show_cursor_diagnostics<CR>", "lsp cursor diagnostics", silent = true },
-        l = { "<cmd>Lspsaga show_line_diagnostics<CR>", "lsp line diagnostics", silent = true },
+        -- c = { "<cmd>Lspsaga show_cursor_diagnostics<cr>", "lsp cursor diagnostics", silent = true },
+        -- l = { "<cmd>Lspsaga show_line_diagnostics<cr>", "lsp line diagnostics", silent = true },
       }
     }
   },
 }
+
+M.tmap = {
+  -- ["<A-d>"] = { [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], "toggle nvimtree", mode = "t", silent = true },
+}
+
 
 return M

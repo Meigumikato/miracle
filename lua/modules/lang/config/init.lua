@@ -3,8 +3,8 @@ local M = {}
 
 local lsplist = {
   'sumneko_lua',
-  'clangd',
-  'rust_analyzer'
+  -- 'clangd',
+  -- 'rust_analyzer'
 }
 
 local function helper(lspname)

@@ -10,4 +10,7 @@ require('core')
 -- vim.cmd "packadd packer.nvim"
 -- require "plugins"
 -- vim.cmd "PackerSync"
-require("plugins").load_config()
+-- 
+require('plugins').load_config()
+-- 
+-- -- 

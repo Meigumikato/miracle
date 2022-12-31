@@ -1,44 +1,5 @@
 local icons = require('core.icons')
 
-local function common_on_attach(client, bufnr)
-  -- load lsp key map
-  local utils = require('core.utils')
-  utils.load_mapping('lspconfig', { buffer = bufnr })
-  -- winbar config
-  -- if client.server_capabilities.documentSymbolProvider then
-  --     require('nvim-navic').attach(client, bufnr)
-  -- end
-end
-
-local function common_capabilities()
-  local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-  if status_ok then
-    return cmp_nvim_lsp.default_capabilities()
-  end
-
-  vim.pretty_print('common_capabilities')
-
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-  capabilities.textDocument.completion.completionItem = {
-    documentationFormat = { "markdown", "plaintext" },
-    snippetSupport = true,
-    preselectSupport = true,
-    insertReplaceSupport = true,
-    labelDetailsSupport = true,
-    deprecatedSupport = true,
-    commitCharactersSupport = true,
-    tagSupport = { valueSet = { 1 } },
-    resolveSupport = {
-      properties = {
-        "documentation",
-        "detail",
-        "additionalTextEdits",
-      },
-    },
-  }
-  return capabilities
-end
 
 local diagnostics_signs = {
   Error = icons.diagnostics.BoldError,
@@ -61,46 +22,11 @@ local function config()
     severity_sort = false,
   })
 
-  require('modules.lang').setup(common_on_attach, common_capabilities())
+
+  local completion = require('modules.completion')
+  require('modules.lang').setup(completion.common_on_attach, completion.common_capabilities())
 end
 
+
+
 return config
-
--- lspconfig.sumneko_lua.setup {
---   on_attach = M.common_on_attach,
---   capabilities = M.common_capabilities(),
---   settings = {
---     Lua = {
---       runtime = {
---         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
---         version = 'LuaJIT',
---       },
---       diagnostics = {
---         -- Get the language server to recognize the `vim` global
---         globals = { 'vim' },
---       },
---       workspace = {
---         -- Make the server aware of Neovim runtime files
---         library = {
---           -- vim.api.nvim_get_runtime_file("", true),
---           vim.fn.expand "$VIMRUNTIME/lua",
---           vim.fn.expand "$VIMRUNTIME/lua/vim/lsp",
---           -- require('neodev.config').types(),
---           '${3rd}/busted/library',
---           '${3rd}/luassert/library',
---         },
---         maxPreload = 100000,
---         preloadFileSize = 10000,
---       },
---       -- Do not send telemetry data containing a randomized but unique identifier
---       telemetry = {
---         enable = false,
---       },
---     },
---   },
--- }
-
--- lspconfig.clangd.setup {
---   on_attach = M.common_on_attach,
---   capabilities = M.common_capabilities(),
--- }
