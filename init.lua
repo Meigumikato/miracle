@@ -11,6 +11,8 @@ require('core')
 -- require "plugins"
 -- vim.cmd "PackerSync"
 -- 
+
 require('plugins').load_config()
+
 -- 
 -- -- 

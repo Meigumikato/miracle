@@ -12,10 +12,25 @@ local function helper(lspname)
   return prefix .. lspname
 end
 
-function M.setup(on_attach, capabilities)
+function M.setup()
+  local on_attach = require('modules.lang').on_attach
+  local capabilities = require("modules.lang").capabilities
+  -- capabilities.offsetEncoding = { "utf-16" }
+  local bufnr = vim.api.nvim_get_current_buf()
+
+  for _, value in pairs({'go', 'cpp', 'c', 'rust'}) do
+    if value == vim.bo[bufnr].filetype then
+      -- vim.notify('single config lsp', vim.log.levels.INFO)
+      return
+    end
+  end
+
+  if vim.bo[bufnr].filetype == 'lua' then
+    require('neodev').setup()
+  end
+
   for _, value in pairs(lsplist) do
     local lsp_config = require(helper(value))
-    -- vim.pretty_print(lsp_config)
 
     if not lsp_config.diable or lsp_config.diable == false then
       lsp_config.setup(on_attach, capabilities)

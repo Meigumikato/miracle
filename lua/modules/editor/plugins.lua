@@ -1,10 +1,10 @@
 local M = {
   ['nvim-treesitter/nvim-treesitter'] = {
     cmd = require('core.lazy_load').treesitter_cmds,
-    event = "BufReadPost",
+    ft = { 'c', 'cpp', 'lua', 'go', 'rust' },
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
       "p00f/nvim-ts-rainbow",
+      "nvim-treesitter/nvim-treesitter-textobjects",
     },
     build = ":TSUpdate",
     config = require('modules.editor.config.treesitter'),
@@ -33,11 +33,11 @@ local M = {
       require('Comment').setup()
     end
   },
+
   ["lukas-reineke/indent-blankline.nvim"] = {
     event = { 'BufReadPost' },
     config = require('modules.editor.config.indentline'),
   }
 }
-
 
 return M

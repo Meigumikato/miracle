@@ -16,6 +16,17 @@ local conditions = {
   -- end,
 }
 
+local function diff_source()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added    = gitsigns.added,
+      modified = gitsigns.changed,
+      removed  = gitsigns.removed,
+    }
+  end
+end
+
 local colors = {
   bg = "#202328",
   fg = "#bbc2cf",
@@ -34,7 +45,7 @@ local colors = {
 M.mode = {
   -- mode component
   function()
-    return ''
+    return ''
   end,
   color = function()
     -- auto change color according to neovims mode
@@ -85,7 +96,7 @@ M.component = {
       modified = { fg = colors.yellow },
       removed = { fg = colors.red },
     },
-    -- source = diff_source(),
+    source = diff_source(),
     symbols = {
       added = icons.git.LineAdded .. ' ',
       modified = icons.git.LineModified .. ' ',
@@ -127,7 +138,7 @@ M.component = {
       end
       for _, client in ipairs(clients) do
         local filetypes = client.config.filetypes
-        if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+        if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 and client.name ~= 'null-ls' then
           return client.name
         end
       end
@@ -150,16 +161,6 @@ M.component = {
 }
 -- local navic = require('nvim-navic')
 
--- local function diff_source()
---   local gitsigns = vim.b.gitsigns_status_dict
---   if gitsigns then
---     return {
---       added    = gitsigns.added,
---       modified = gitsigns.changed,
---       removed  = gitsigns.removed,
---     }
---   end
--- end
 
 
 -- require('lualine.component.filetypes').
@@ -167,10 +168,6 @@ M.component = {
 local options = {
   options = {
     icons_enabled = true,
-    theme = {
-      normal = { c = { fg = colors.fg, bg = colors.bg } },
-      inactive = { c = { fg = colors.fg, bg = colors.bg } },
-    },
     component_separators = {
       left = '',
       right = '',
@@ -180,8 +177,8 @@ local options = {
       right = '',
     },
     disabled_filetypes = {
-      statusline = { 'alpha', 'dashboard' },
-      winbar = { 'alpha', 'NvimTree', 'dashboard' },
+      statusline = { 'dashboard', 'Trouble', 'quickfix', 'DiffviewFiles', "lspsagaoutline", 'help' },
+      winbar = { 'NvimTree', 'dashboard', 'Trouble', 'quickfix', 'DiffviewFiles', 'lspsagaoutline', 'help' },
     },
     ignore_focus = {},
     always_divide_middle = true,
@@ -235,34 +232,9 @@ local options = {
   },
 
   tabline = {},
-  winbar = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {
-      -- 'filetype',
-      -- M.filename,
-      -- { navic.get_location, cond = navic.is_avaiable }
-    },
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {}
+  winbar = {},
 
-  },
-
-  inactive_winbar = {
-    lualine_a = {},
-    lualine_b = {
-      -- M.filetype,
-    },
-    lualine_c = {
-      -- M.filename,
-      -- { navic.get_location, cond = navic.is_avaiable }
-    },
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {}
-
-  },
+  inactive_winbar = {},
   extensions = { 'nvim-tree', 'quickfix', 'symbols-outline', 'toggleterm' }
 }
 -- M.filename = {
@@ -284,8 +256,5 @@ local options = {
 --   end,
 -- }
 
-local function config()
-  require('lualine').setup(options)
-end
+require('lualine').setup(options)
 
-return config

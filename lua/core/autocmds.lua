@@ -1,16 +1,3 @@
-local M = {
-  {'FocusGained', }
-}
--- Check if we need to reload the file when it changed
-vim.api.nvim_create_autocmd("FocusGained", { command = "checktime" })
-
--- Highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
-
 -- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPre", {
   pattern = "*",
@@ -47,21 +34,3 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
   end,
 })
-
--- barbecue update
--- vim.api.nvim_create_autocmd({
---   "WinScrolled",
---   "BufWinEnter",
---   "CursorHold",
---   "InsertLeave",
---
---   -- include these if you have set `show_modified` to `true`
---   "BufWritePost",
---   "TextChanged",
---   "TextChangedI",
--- }, {
---   group = vim.api.nvim_create_augroup("barbecue", {}),
---   callback = function()
---     require("barbecue.ui").update()
---   end,
--- })

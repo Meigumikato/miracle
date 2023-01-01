@@ -46,13 +46,52 @@ local M = {
     end,
   },
 
-  ['rcarriga/nvim-notify'] = {
-    config = function ()
-      vim.notify = require("notify")
+  ['kevinhwang91/nvim-bqf'] = {
+    ft = 'qf',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter'
+    }
+  },
+
+
+  ['jose-elias-alvarez/null-ls.nvim'] = {
+    event = { 'LspAttach' },
+    config = function()
+      local nuls_ls = require('null-ls')
+      nuls_ls.setup {
+        debug = false,
+        sources = {
+          -- nuls_ls.builtins.formatting.clang_format,
+          nuls_ls.builtins.formatting.stylua,
+          nuls_ls.builtins.formatting.gofumpt
+        },
+      }
+    end,
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+
+  ["folke/trouble.nvim"] = {
+    dependencies = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+      }
     end
   },
-  ['jose-elias-alvarez/null-ls.nvim'] = {
-    lazy = true,
+
+  ['lewis6991/gitsigns.nvim'] = {
+    event = "BufReadPost",
+    config = function()
+      require('modules.tools.config.gitsign')
+    end
+  },
+
+  ['sindrets/diffview.nvim'] = {
+    cmd = { 'DiffviewOpen', 'DiffviewClose', 'DiffviewFileHistory',
+      'DiffviewToggleFiles', 'DiffviewFocusFiles', 'DiffviewRefresh' },
+    config = function()
+      require("diffview").setup {}
+    end,
+    dependencies = { 'nvim-lua/plenary.nvim' }
   }
 }
 

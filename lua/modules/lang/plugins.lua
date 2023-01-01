@@ -1,11 +1,12 @@
 local M = {
+
   ["p00f/clangd_extensions.nvim"] = {
     ft = { 'cpp', 'c' },
-    config = function ()
+    config = function()
       require('modules.lang.config.clangd')
     end,
     dependencies = {
-      'ray-x/navigator.lua',
+      'neovim/nvim-lspconfig'
     },
   },
   ['simrat39/rust-tools.nvim'] = {
@@ -14,7 +15,16 @@ local M = {
       require('modules.lang.config.rust_analyzer')
     end,
     dependencies = {
-      'ray-x/navigator.lua',
+      'neovim/nvim-lspconfig'
+    },
+  },
+  ['ray-x/go.nvim'] = {
+    ft = { 'go' },
+    config = function()
+      require('modules.lang.config.gopls')
+    end,
+    dependencies = {
+      'neovim/nvim-lspconfig'
     },
   }
 }

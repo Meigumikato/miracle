@@ -30,14 +30,16 @@ local M = {
   },
 
   ['nvim-lualine/lualine.nvim'] = {
-    event = { "BufReadPost" },
+    event = { "BufNewFile", "BufReadPost" },
     dependencies = { 'kyazdani42/nvim-web-devicons' },
-    config = require('modules.ui.config.lualine')
+    config = function()
+      require('modules.ui.config.lualine')
+    end,
   },
 
   ['folke/lsp-colors.nvim'] = {
     event = 'LspAttach',
-    config = function ()
+    config = function()
       require("lsp-colors").setup({
         Error = "#db4b4b",
         Warning = "#e0af68",
@@ -49,21 +51,38 @@ local M = {
 
   ['j-hui/fidget.nvim'] = {
     event = 'LspAttach',
-    config = function ()
+    config = function()
       require('fidget').setup()
     end
   },
 
   ['simrat39/symbols-outline.nvim'] = {
-    cmd = {'SymbolsOutline'},
-    config = function ()
+    cmd = { 'SymbolsOutline' },
+    config = function()
       require("symbols-outline").setup()
     end
   },
 
-  ["stevearc/dressing.nvim"] = {
-    config = require('modules.ui.config.dressing'),
+  ['rcarriga/nvim-notify'] = {
+    config = function()
+      vim.notify = require("notify")
+    end
   },
+  -- ["stevearc/dressing.nvim"] = {
+  --   config = require('modules.ui.config.dressing'),
+  -- },
+  -- Packer
+  -- ["folke/noice.nvim"] = {
+  --   config = function()
+  --     vim.notify = require("notify")
+  --     require('modules.ui.config.noice')
+  --   end,
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "rcarriga/nvim-notify",
+  --   }
+  -- }
+  --
 
   -- ["utilyre/barbecue.nvim"] = {
   --   -- event = 'LspAttach',

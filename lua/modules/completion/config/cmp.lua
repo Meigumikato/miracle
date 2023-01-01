@@ -124,6 +124,10 @@ end
 local function config()
 
   local cmp = require('cmp')
+  if not cmp then
+    vim.notify("cmp loaded failed", vim.log.levels.ERROR)
+    return
+  end
   local luasnip = require('luasnip')
 
   local options = {
@@ -139,7 +143,7 @@ local function config()
 
     snippet = {
       expand = function(args)
-        require('luasnip').lsp_expand(args.body)
+        luasnip.lsp_expand(args.body)
       end,
     },
 
@@ -155,7 +159,6 @@ local function config()
       ["<C-n>"] = cmp.mapping.select_next_item(),
       ["<C-d>"] = cmp.mapping.scroll_docs(-4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
-      ["<C-Space>"] = cmp.mapping.complete(),
       ["<C-e>"] = cmp.mapping.close(),
       ["<CR>"] = cmp.mapping.confirm({
         select = true,
@@ -216,6 +219,10 @@ local function config()
       { name = "path" },
     },
   }
+
+  if vim.o.ft == 'clap_input' and vim.o.ft == 'guihua' and vim.o.ft == 'guihua_rust' then
+    require'cmp'.setup.buffer { completion = {enable = false} }
+  end
 
   cmp.setup(options)
 end

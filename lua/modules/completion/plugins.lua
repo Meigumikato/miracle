@@ -3,39 +3,36 @@ local M = {
   -- load on specify filetype
   ['neovim/nvim-lspconfig'] = {
     lazy = true,
-    -- ft = { 'lua', 'c', 'cpp', 'rust' },
-    -- config = require('modules.completion.config.lsp'),
+    ft = { 'lua' },
+    config = require('modules.completion.config.lsp'),
   },
 
 
   ["folke/neodev.nvim"] = {
+    lazy = true,
   },
-  -- ['ray-x/lsp_signature.nvim'] = {
-  --   event = "LspAttach",
-  --   config = function ()
-  --     require'lsp_signature'.setup {
-  --       fix_pos = true,
-  --     }
-  --   end
-  -- },
+  ['ray-x/lsp_signature.nvim'] = {
+    lazy = true
+  },
   -- load on lsp attach
-  -- ["glepnir/lspsaga.nvim"] = {
-  --   cmd = {'Lspsaga'},
-  --   branch = "main",
-  --   -- event = "LspAttach",
-  --   config = require('modules.completion.config.saga'),
-  -- },
-  ['ray-x/navigator.lua'] = {
-    ft = { 'lua', 'c', 'cpp', 'rust', 'go' },
-    dependencies = {
-      { 'ray-x/guihua.lua', build = 'cd lua/fzy && make' },
-      { 'neovim/nvim-lspconfig' },
-      { 'ray-x/lsp_signature.nvim' },
-    },
-    config = function()
-      require('modules.completion.config.navigator')
-    end,
+  ["glepnir/lspsaga.nvim"] = {
+    -- cmd = {'Lspsaga'},
+    branch = "main",
+    -- event = "LspAttach",
+    config = require('modules.completion.config.saga'),
   },
+  -- ['ray-x/navigator.lua'] = {
+  --   ft = { 'lua', 'sh' },
+  --   -- lazy = true,
+  --   dependencies = {
+  --     { 'ray-x/guihua.lua', build = 'cd lua/fzy && make' },
+  --     { 'neovim/nvim-lspconfig' },
+  --     { 'ray-x/lsp_signature.nvim' },
+  --   },
+  --   config = function()
+  --     require('modules.completion.config.navigator')
+  --   end,
+  -- },
 
   -- load by cmp loaded
   ['L3MON4D3/LuaSnip'] = {
