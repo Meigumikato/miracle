@@ -6,7 +6,7 @@ local M = {
       require('modules.lang.config.clangd')
     end,
     dependencies = {
-      'neovim/nvim-lspconfig'
+      'neovim/nvim-lspconfig',
     },
   },
   ['simrat39/rust-tools.nvim'] = {
@@ -24,7 +24,8 @@ local M = {
       require('modules.lang.config.gopls')
     end,
     dependencies = {
-      'neovim/nvim-lspconfig'
+      'neovim/nvim-lspconfig',
+      {'ray-x/guihua.lua', build = 'cd lua/fzy && make' },
     },
   }
 }

@@ -1,16 +1,16 @@
 local config = function()
-  local home = os.getenv('HOME')
+  -- local home = os.getenv('HOME')
   local db = require('dashboard')
 
   db.custom_center = {
     { icon = '  ',
       desc = 'New File                                ',
-      shortcut = 'SPC s n',
+      shortcut = 'SPC d n',
       action = 'DashboardNewFile' },
-    { icon = '  ',
-      desc = 'Recently opened files                   ',
-      action = 'DashboardFindHistory',
-      shortcut = 'SPC f r' },
+    -- { icon = '  ',
+    --   desc = 'Recently opened files                   ',
+    --   action = 'DashboardFindHistory',
+    --   shortcut = 'SPC f r' },
     { icon = '  ',
       desc = 'Find  File                              ',
       action = 'Telescope find_files                  ',
@@ -22,11 +22,11 @@ local config = function()
     { icon = '  ',
       desc = 'Find  word                              ',
       action = 'Telescope live_grep',
-      shortcut = 'SPC f w' },
-    { icon = '  ',
-      desc = 'Open Personal Config                    ',
-      action = 'Telescope dotfiles path=' .. home .. '/.config/nvim',
-      shortcut = 'SPC f d' },
+      shortcut = 'SPC f g' },
+    -- { icon = '  ',
+    --   desc = 'Open Personal Config                    ',
+    --   action = 'Telescope dotfiles',
+    --   shortcut = 'SPC d c' },
   }
 end
 

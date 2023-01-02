@@ -11,12 +11,11 @@ M.nmap = {
   ['<C-j>'] = { '<C-w>j', "switch to down", opts },
   ['<C-k>'] = { '<C-w>k', "switch to up", opts },
 
-  ['gp'] = { '<cmd>Lspsaga peek_definition<cr>', "peek definition", opts },
-  ['gd'] = { vim.lsp.buf.definition, "goto definition", opts },
-  ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts },
-  ["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", opts },
+  -- ['gp'] = { '<cmd>Lspsaga peek_definition<cr>', "peek definition", opts },
+  -- ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "diagnostic_jump_prev", opts },
+  -- ["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "diagnostic_jump_next", opts },
 
-  ["K"] = { "<cmd>Lspsaga hover_doc<CR>", "hover doc", opts },
+  -- ["K"] = { "<cmd>Lspsaga hover_doc<CR>", "hover doc", opts },
   ["<leader>"] = {
     b = {
       name = "+buffer",
@@ -29,8 +28,8 @@ M.nmap = {
 
     c = {
       name = "+code",
-      a = { "<cmd>Lspsaga code_action<CR>", "Code Action", opts },
-      f = { function() vim.lsp.buf.format { async = true } end, "Code Format", opts },
+      -- a = { "<cmd>Lspsaga code_action<CR>", "Code Action", opts },
+      -- f = { function() vim.lsp.buf.format { async = true } end, "Code Format", opts },
     },
 
     f = {
@@ -68,13 +67,18 @@ M.nmap = {
     },
     m = {
       name = "+lsp mode",
-      f = { "<cmd>Lspsaga lsp_finder<CR>", 'Lspsaga finder', opts },
-      r = { '<cmd>Lspsaga rename<cr>', "lsp rename", opts },
+      -- f = { "<cmd>Lspsaga lsp_finder<CR>", 'Lspsaga finder', opts },
+      -- r = { '<cmd>Lspsaga rename<cr>', "lsp rename", opts },
       o = { "<cmd>SymbolsOutline<cr>", "code outline", opts },
+      i = {
+        name = "Mode Info",
+        l = {'<cmd>LspInfo<cr>', "LSP Info", opts},
+        n = {'<cmd>NullLsInfo<cr>', "Null-ls Info", opts}
+      },
       d = {
         name = "+lsp diagnostics",
-        c = { "<cmd>Lspsaga show_cursor_diagnostics<cr>", "lsp cursor diagnostics", opts },
-        l = { "<cmd>Lspsaga show_line_diagnostics<cr>", "lsp line diagnostics", opts },
+        -- c = { "<cmd>Lspsaga show_cursor_diagnostics<cr>", "lsp cursor diagnostics", opts },
+        -- l = { "<cmd>Lspsaga show_line_diagnostics<cr>", "lsp line diagnostics", opts },
         -- Lua
         t = { "<cmd>TroubleToggle<cr>", 'TroubleToggle', opts },
         w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics", opts },

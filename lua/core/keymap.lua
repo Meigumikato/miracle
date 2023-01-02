@@ -1,46 +1,16 @@
 local M = {}
 
-
-M.lspconfig = {
-  plugin = true,
-  n = {
-    ['gd'] = {
-      function()
-        vim.lsp.buf.definition()
-      end,
-      'lsp goto definition',
+-- lazygit
+vim.keymap.set("n", "<leader>gz", function()
+  require("lazy.util").open_cmd({ "lazygit" }, {
+    terminal = true,
+    close_on_exit = true,
+    enter = true,
+    float = {
+      size = { width = 0.9, height = 0.9 },
+      margin = { top = 0, right = 0, bottom = 0, left = 0 },
     },
-    ['K'] = {
-      function()
-        vim.lsp.buf.hover()
-      end,
-      'lsp hover'
-    },
-    ['[d'] = {
-      function()
-        vim.diagnostic.goto_prev({})
-      end,
-      'lsp diagnostic goto prev'
-    },
-    [']d'] = {
-      function()
-        vim.diagnostic.goto_next()
-      end,
-      'lsp diagnostic goto next'
-    },
-    ['<space>fm'] = {
-      function()
-        vim.lsp.buf.format { async = true }
-      end,
-      'lsp format'
-    },
-    ['<space>f'] = {
-      function()
-        vim.diagnostic.open_float()
-      end,
-      'lsp diagnostic open float'
-    }
-  }
-}
+  })
+end, { desc = "Lazygit" })
 
 return M

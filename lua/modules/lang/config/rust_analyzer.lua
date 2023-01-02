@@ -30,7 +30,7 @@ local options = {
     -- setting it to false may improve startup time
     standalone = false,
     on_attach = require('modules.lang').on_attach,
-    capabilities = require('modules.lang').capabilities(),
+    capabilities = require('modules.lang').capabilities,
   },
 
   -- debugging stuff

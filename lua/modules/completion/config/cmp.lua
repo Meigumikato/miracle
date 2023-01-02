@@ -150,7 +150,7 @@ local function config()
     formatting = {
       format = function(_, vim_item)
         local kinds = icons.kind
-        vim_item.kind = string.format("%s %s", kinds[vim_item.kind], vim_item.kind)
+        vim_item.kind = kinds[vim_item.kind] .. vim_item.kind
         return vim_item
       end,
     },
@@ -215,6 +215,7 @@ local function config()
       { name = 'nvim_lsp_signature_help' },
       { name = "nvim_lua" },
       { name = "buffer" },
+      { name = "emoji" },
       { name = 'treesitter' },
       { name = "path" },
     },

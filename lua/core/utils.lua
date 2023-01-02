@@ -35,7 +35,6 @@ function M.load_mapping(section, map_opts)
   for _, sect in pairs(mappings) do
     set_section_map(sect)
   end
-
 end
 
 return M

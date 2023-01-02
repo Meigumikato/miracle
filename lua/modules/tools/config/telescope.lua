@@ -43,28 +43,31 @@ local function config()
         override_file_sorter = true, -- override the file sorter
         case_mode = "smart_case", -- or "ignore_case" or "respect_case"
       },
-      -- project = {
-      --   -- base_dirs = {
-      --   --   '~/dev/src',
-      --   --   {'~/dev/src2'},
-      --   --   {'~/dev/src3', max_depth = 4},
-      --   --   {path = '~/dev/src4'},
-      --   --   {path = '~/dev/src5', max_depth = 2},
-      --   -- },
-      --   hidden_files = true, -- default: false
-      --   theme = "dropdown",
-      --   order_by = "asc",
-      --   search_by = "title",
-      --   sync_with_nvim_tree = true, -- default false
-      -- }
+      project = {
+        base_dirs = {
+          '~/Code/',
+        --   {'~/dev/src2'},
+        --   {'~/dev/src3', max_depth = 4},
+        --   {path = '~/dev/src4'},
+        --   {path = '~/dev/src5', max_depth = 2},
+        },
+        hidden_files = true, -- default: false
+        theme = "dropdown",
+        order_by = "asc",
+        search_by = "title",
+        sync_with_nvim_tree = true, -- default false
+      },
       file_browser = {},
+      dotfiles = {
+        config_dir = '~/.config/nvim/init.lua',
+      }
     }
   }
 
   require('telescope').load_extension('fzf')
   require("telescope").load_extension("file_browser")
   require('telescope').load_extension('project')
-  require("telescope").load_extension("noice")
+  require("telescope").load_extension("dotfiles")
 end
 
 return config

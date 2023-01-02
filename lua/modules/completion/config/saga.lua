@@ -19,7 +19,7 @@ local options = {
 	-- { bufnr, code, col, end_col, end_lnum, lnum, message, severity, source }
 	diagnostic_header = { " ", " ", " ", "ﴞ " },
 	-- preview lines above of lsp_finder
-	preview_lines_above = 0,
+	preview_lines_above = 4,
 	-- preview lines of lsp_finder and definition preview
 	max_preview_lines = 10,
 	-- use emoji lightbulb in default

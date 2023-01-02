@@ -6,6 +6,7 @@ local M = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-project.nvim',
       'nvim-telescope/telescope-file-browser.nvim',
+      'alex-laycalvert/telescope-dotfiles.nvim',
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make"
@@ -71,6 +72,7 @@ local M = {
   },
 
   ["folke/trouble.nvim"] = {
+    event = {'LspAttach'},
     dependencies = "kyazdani42/nvim-web-devicons",
     config = function()
       require("trouble").setup {
@@ -79,7 +81,8 @@ local M = {
   },
 
   ['lewis6991/gitsigns.nvim'] = {
-    event = "BufReadPost",
+    -- event = "BufReadPost",
+    lazy = true,
     config = function()
       require('modules.tools.config.gitsign')
     end
@@ -87,12 +90,49 @@ local M = {
 
   ['sindrets/diffview.nvim'] = {
     cmd = { 'DiffviewOpen', 'DiffviewClose', 'DiffviewFileHistory',
-      'DiffviewToggleFiles', 'DiffviewFocusFiles', 'DiffviewRefresh' },
+            'DiffviewToggleFiles', 'DiffviewFocusFiles', 'DiffviewRefresh' },
     config = function()
-      require("diffview").setup {}
+      require("diffview").setup {
+        -- hooks = {
+        --   view_opened = function()
+        --     vim.notify('hideline', vim.log.levels.INFO)
+        --     require('lualine').hide {
+        --       unhide = false,
+        --     }
+        --   end,
+        --   view_closed = function()
+        --     vim.notify('restoreline', vim.log.levels.INFO)
+        --     require('lualine').hide {
+        --       unhide = true,
+        --     }
+        --   end
+        -- }
+      }
     end,
     dependencies = { 'nvim-lua/plenary.nvim' }
-  }
+  },
+  ["TimUntersberger/neogit"] = {
+    cmd = {"Neogit"},
+    config = {
+      integrations = { diffview = true },
+      use_magit_keybindings = true,
+      signs = {
+        -- { CLOSED, OPENED }
+        section = { "", "" },
+        item = { "", "" },
+        hunk = { "", "" },
+      },
+    },
+    keys = {
+      { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
+    },
+
+    dependencies = {
+      'sindrets/diffview.nvim',
+    }
+  },
+
+
 }
 
 return M

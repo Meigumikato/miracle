@@ -5,20 +5,19 @@ local M = {
     lazy = true,
     ft = { 'lua' },
     config = require('modules.completion.config.lsp'),
+    dependencies = {
+      { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
+      { "folke/neodev.nvim", config = true },
+    },
   },
 
-
-  ["folke/neodev.nvim"] = {
-    lazy = true,
-  },
   ['ray-x/lsp_signature.nvim'] = {
     lazy = true
   },
   -- load on lsp attach
   ["glepnir/lspsaga.nvim"] = {
-    -- cmd = {'Lspsaga'},
+    event = "LspAttach",
     branch = "main",
-    -- event = "LspAttach",
     config = require('modules.completion.config.saga'),
   },
   -- ['ray-x/navigator.lua'] = {

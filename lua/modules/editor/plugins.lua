@@ -37,7 +37,38 @@ local M = {
   ["lukas-reineke/indent-blankline.nvim"] = {
     event = { 'BufReadPost' },
     config = require('modules.editor.config.indentline'),
-  }
+  },
+  ["ggandor/leap.nvim"] = {
+    event = "BufReadPost",
+    dependencies = {
+      { "ggandor/flit.nvim", config = { labeled_modes = "nv" } },
+    },
+    config = function()
+      require("leap").add_default_mappings()
+    end,
+  },
+  ["RRethy/vim-illuminate"] = {
+    event = "BufReadPost",
+    config = function()
+      require("illuminate").configure({ delay = 200 })
+    end,
+    keys = {
+      {
+        "]]",
+        function()
+          require("illuminate").goto_next_reference(false)
+        end,
+        desc = "Next Reference",
+      },
+      {
+        "[[",
+        function()
+          require("illuminate").goto_prev_reference(false)
+        end,
+        desc = "Prev Reference",
+      },
+    },
+  },
 }
 
 return M
