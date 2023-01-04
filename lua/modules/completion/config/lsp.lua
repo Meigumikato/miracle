@@ -49,14 +49,34 @@ local function common_on_attach(client, bufnr)
 	map("<leader>cli", "Telescope lsp_implementations", { desc = "Goto Implementation" })
 	map("<leader>clt", "Telescope lsp_type_definitions", { desc = "Goto Type Definition" })
 
-	map("gd", "Telescope lsp_definitions", { desc = "Goto Definition" })
+	map("gd", "Trouble lsp_definitions", { desc = "Goto Definition" })
 	map("gp", "Lspsaga peek_definition", { desc = "Peek Definition" })
-	map("gr", "Telescope lsp_references", { desc = "References" })
-	map("gD", "Telescope lsp_declarations", { desc = "Goto Declaration" })
+	map("gr", "Trouble lsp_references", { desc = "References" })
+	map("gD", "Telescope lsp_type_definitions", { desc = "Goto Declaration" })
 	map("<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Help", mode = { "i", "n" } })
 	map("K", "Lspsaga hover_doc", { desc = "Hover" })
 	map("[d", "Lspsaga diagnostic_jump_next", { desc = "Next Diagnostic" })
 	map("]d", "Lspsaga diagnostic_jump_prev", { desc = "Prev Diagnostic" })
+
+  map("[e",
+    function()
+      require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    end, { desc = "Next Error" })
+
+  map("]e",
+    function()
+      require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+    end, { desc = "Next Error" })
+
+  map("[w",
+    function()
+      require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.WARN })
+    end, { desc = "Next Warning" })
+
+  map("]w",
+    function()
+      require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.WARN })
+    end, { desc = "Next Warning" })
 	-- map("]e", M.diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
 	-- map("[e", M.diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
 	-- map("]w", M.diagnostic_goto(true, "WARNING"), { desc = "Next Warning" })
@@ -81,13 +101,14 @@ local function common_on_attach(client, bufnr)
 		handler_opts = {
 			border = "rounded",
 		},
-		fix_pos = function(signatures, _)
-			if signatures[1] and signatures[1].activeParameter <= 1 then
-				return false
-      else
-        return true
-			end
-		end,
+		-- fix_pos = function(signatures, _)
+		-- 	-- if signatures[1] and signatures[1].activeParameter <= 1 then
+		-- 	-- 	return false
+  --  --    else
+  --  --      return true
+		-- 	-- end
+  --     return false
+		-- end,
 	}, bufnr)
 end
 

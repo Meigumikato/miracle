@@ -7,7 +7,7 @@ local M = {
     config = require('modules.completion.config.lsp'),
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-      { "folke/neodev.nvim", config = true },
+      -- { "folke/neodev.nvim", config = true },
     },
   },
 
@@ -56,7 +56,7 @@ local M = {
     },
     config = require('modules.completion.config.cmp'),
   },
-
+  -- ['github/copilot.vim'] = {}
 }
 
 return M

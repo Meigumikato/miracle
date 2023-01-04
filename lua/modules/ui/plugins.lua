@@ -9,15 +9,25 @@ local M = {
     priority = 1000,
     config = require('modules.ui.config.tokyonight'),
   },
+  -- ['sainnhe/gruvbox-material'] = {
+  --   priority = 1000,
+  --   config = function ()
+  --     vim.g.gruvbox_material_background = 'hard'
+  --     vim.g.gruvbox_material_better_performance = 1
+  --     vim.api.nvim_command('colorscheme gruvbox-material')
+  --   end,
+  -- },
 
   ['nvim-tree/nvim-tree.lua'] = {
-    cmd = { 'NvimTreeToggle', 'NvimTreeFocus' },
+    cmd = { 'NvimTreeToggle', 'NvimTreeFocus', 'NvimTreeOpen' },
+    keys = require("modules.ui.keymap").nvimtree,
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     config = require('modules.ui.config.nvimtree'),
   },
 
   ['akinsho/bufferline.nvim'] = {
     event = { "BufAdd" },
+    keys = require("modules.ui.keymap").bufferline,
     tag = "v3.1.0",
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     config = require('modules.ui.config.bufferline'),

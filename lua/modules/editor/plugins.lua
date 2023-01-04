@@ -17,6 +17,24 @@ local M = {
     end,
   },
 
+  -- ["echasnovski/mini.surround"] = {
+  --   keys = { "gz" },
+  --   config = function()
+  --     -- use gz mappings instead of s to prevent conflict with leap
+  --     require("mini.surround").setup({
+  --       mappings = {
+  --         add = "gza", -- Add surrounding in Normal and Visual modes
+  --         delete = "gzd", -- Delete surrounding
+  --         find = "gzf", -- Find surrounding (to the right)
+  --         find_left = "gzF", -- Find surrounding (to the left)
+  --         highlight = "gzh", -- Highlight surrounding
+  --         replace = "gzr", -- Replace surrounding
+  --         update_n_lines = "gzn", -- Update `n_lines`
+  --       },
+  --     })
+  --   end,
+  -- },
+
   ["windwp/nvim-autopairs"] = {
     event = "InsertEnter",
     config = function()
@@ -35,6 +53,7 @@ local M = {
   },
 
   ["lukas-reineke/indent-blankline.nvim"] = {
+
     event = { 'BufReadPost' },
     config = require('modules.editor.config.indentline'),
   },
@@ -44,13 +63,18 @@ local M = {
       { "ggandor/flit.nvim", config = { labeled_modes = "nv" } },
     },
     config = function()
-      require("leap").add_default_mappings()
+      require("leap").add_default_mappings(true)
     end,
   },
   ["RRethy/vim-illuminate"] = {
     event = "BufReadPost",
     config = function()
-      require("illuminate").configure({ delay = 200 })
+      require("illuminate").configure({
+        filetypes_denylist = {
+          'NvimTree',
+        },
+        delay = 200
+      })
     end,
     keys = {
       {

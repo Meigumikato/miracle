@@ -34,13 +34,16 @@ local function diagnostics_indicator(num, level, diagnostics_table, context)
       table.insert(result, symbols[name] .. " " .. count)
     end
   end
-  result = table.concat(result, " ")
+  _ = table.concat(result, " ")
   return #result > 0 and result or ""
 end
 
 local config = {
   options = {
     mode = "buffers", -- set to "tabs" to only show tabpages instead
+    elements = {
+      {id = 1, name = "hi.txt"},
+    },
     numbers = "none",
     close_command = "bdelete! %d",
     right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
@@ -81,8 +84,9 @@ local config = {
       {
         filetype = "NvimTree",
         text = "File Explorer",
-        text_align = "left",
-        -- separator = true,
+        text_align = "center",
+        separator = true,
+        highlight = "Directory",
       }
     },
     color_icons = true, -- whether or not to add the filetype icon highlights

@@ -7,6 +7,7 @@
 
 local function config()
   local icons = require('core.icons')
+  local trouble = require("trouble.providers.telescope")
   require('telescope').setup {
     defaults = {
       -- Default configuration for telescope goes here:
@@ -19,7 +20,9 @@ local function config()
           -- actions.which_key shows the mappings for your picker,
           -- e.g. git_{create, delete, ...}_branch for the git_branches picker
           ["<C-h>"] = "which_key",
-        }
+          ["<C-t>"] = trouble.open_with_trouble,
+        },
+        n = { ["<C-t>"] = trouble.open_with_trouble },
       }
     },
     pickers = {
@@ -60,7 +63,11 @@ local function config()
       file_browser = {},
       dotfiles = {
         config_dir = '~/.config/nvim/init.lua',
-      }
+      },
+      workspaces = {
+        -- keep insert mode after selection in the picker, default is false
+        keep_insert = true,
+      },
     }
   }
 
@@ -68,6 +75,7 @@ local function config()
   require("telescope").load_extension("file_browser")
   require('telescope').load_extension('project')
   require("telescope").load_extension("dotfiles")
+  require("telescope").load_extension("workspaces")
 end
 
 return config

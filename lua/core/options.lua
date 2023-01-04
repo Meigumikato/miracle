@@ -28,12 +28,12 @@ vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
 vim.opt.cmdheight = 1
 vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.grepprg = "rg --vimgrep"
-vim.opt.guifont = {"FiraCode Nerd Font", ":14"}
+vim.opt.guifont = ("FiraCode Nerd Font:h14:b")
 vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 vim.opt.pumblend = 10 -- Popup blend
 vim.opt.pumheight = 10 -- Maximum number of entries in a popup
 
-vim.opt.mouse = ''
+-- vim.opt.mouse = ''
 
 -- vim.opt.listchars:append "eol:↴"
 --
@@ -45,6 +45,13 @@ vim.opt.splitright = true -- Put new windows right of current
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
 
+
+if vim.g.neovide then
+  vim.g.neovide_hide_mouse_when_typing = true
+  vim.g.neovide_input_macos_alt_is_meta = true
+  -- vim.g.neovide_cursor_vfx_mode = "railgun"
+  vim.g.neovide_cursor_vfx_mode = "ripple"
+end
 
 -- vim.cmd([[colorscheme tokyonight-night]])
 -- vim.o.winbar = " %{%v:lua.require'nvim-navic'.get_location()%} "

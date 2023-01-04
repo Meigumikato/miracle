@@ -25,9 +25,9 @@ function M.setup()
     end
   end
 
-  if vim.bo[bufnr].filetype == 'lua' then
-    require('neodev').setup()
-  end
+  -- if vim.bo[bufnr].filetype == 'lua' then
+  --   require('neodev').setup()
+  -- end
 
   for _, value in pairs(lsplist) do
     local lsp_config = require(helper(value))
