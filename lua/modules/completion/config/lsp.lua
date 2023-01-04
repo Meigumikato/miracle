@@ -84,6 +84,15 @@ local function common_on_attach(client, bufnr)
 
 	if cap.documentFormattingProvider then
 		map("<leader>cm", format, { desc = "Format Document" })
+    if client.name == "gopls" then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = vim.api.nvim_create_augroup("LspFormat." .. bufnr, {}),
+        buffer = bufnr,
+        callback = function()
+            format()
+        end
+      })
+    end
 	end
 
 	if cap.documentRangeFormattingProvider then
