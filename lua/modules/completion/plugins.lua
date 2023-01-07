@@ -3,7 +3,7 @@ local M = {
   -- load on specify filetype
   ['neovim/nvim-lspconfig'] = {
     lazy = true,
-    ft = { 'lua' },
+    ft = { 'lua', 'json', 'sh' },
     config = require('modules.completion.config.lsp'),
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
@@ -56,7 +56,6 @@ local M = {
     },
     config = require('modules.completion.config.cmp'),
   },
-  -- ['github/copilot.vim'] = {}
 }
 
 return M

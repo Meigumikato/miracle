@@ -9,7 +9,9 @@ local M = {
       'neovim/nvim-lspconfig',
     },
   },
-  ['simrat39/rust-tools.nvim'] = {
+    -- use 'simrat39/rust-tools.nvim'
+  -- use 'kdarkhan/rust-tools.nvim'
+  ['kdarkhan/rust-tools.nvim'] = {
     ft = { 'rust' },
     config = function()
       require('modules.lang.config.rust_analyzer')

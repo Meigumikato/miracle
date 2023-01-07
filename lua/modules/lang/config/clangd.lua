@@ -13,6 +13,7 @@ local options = {
       "--completion-style=detailed",
       -- "--header-insertion-decorators",
       "--header-insertion=iwyu",
+      "--offset-encoding=utf-16"
     },
     on_attach = require('modules.lang').on_attach,
     capabilities = require('modules.lang').capabilities,

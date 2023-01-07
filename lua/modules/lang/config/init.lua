@@ -7,6 +7,11 @@ local lsplist = {
   -- 'rust_analyzer'
 }
 
+local autolist = {
+  'jsonls',
+  'bashls',
+}
+
 local function helper(lspname)
   local prefix = 'modules.lang.config.'
   return prefix .. lspname
@@ -36,6 +41,14 @@ function M.setup()
       lsp_config.setup(on_attach, capabilities)
     end
   end
+
+  for _, value in pairs(autolist) do
+    require('lspconfig')[value].setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+    }
+  end
+
 end
 
 return M

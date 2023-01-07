@@ -1,8 +1,8 @@
 local M = {
-["nvim-telescope/telescope.nvim"] = {
+	["nvim-telescope/telescope.nvim"] = {
 		tag = "0.1.0",
 		cmd = { "Telescope" },
-    keys = require('modules.tools.keymap').telescope,
+		keys = require("modules.tools.keymap").telescope,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope-project.nvim",
@@ -58,24 +58,14 @@ local M = {
 	["jose-elias-alvarez/null-ls.nvim"] = {
 		event = { "LspAttach" },
 		config = function()
-			local null_ls = require("null-ls")
-			null_ls.setup({
-				debug = false,
-				sources = {
-					-- nuls_ls.builtins.formatting.clang_format,
-					null_ls.builtins.formatting.stylua,
-					null_ls.builtins.formatting.gofumpt,
-					-- lint
-					null_ls.builtins.diagnostics.golangci_lint,
-				},
-			})
+			require("modules.tools.config.null_ls")
 		end,
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 
 	["folke/trouble.nvim"] = {
 		cmd = { "Trouble", "TroubleRefresh", "TroubleToggle" },
-    keys = require('modules.tools.keymap').trouble,
+		keys = require("modules.tools.keymap").trouble,
 		dependencies = "kyazdani42/nvim-web-devicons",
 		config = function()
 			require("trouble").setup({
@@ -124,32 +114,32 @@ local M = {
 	["TimUntersberger/neogit"] = {
 		cmd = { "Neogit" },
 		config = function()
-      require('neogit').setup{
-        kind = "replace",
-        disable_context_highlighting = false,
-        integrations = { diffview = true },
-        use_magit_keybindings = true,
-        signs = {
-          -- { CLOSED, OPENED }
-          section = { "", "" },
-          item = { "", "" },
-          hunk = { "", "" },
-        },
-		  }
+			require("neogit").setup({
+				kind = "replace",
+				disable_context_highlighting = false,
+				integrations = { diffview = true },
+				use_magit_keybindings = true,
+				signs = {
+					-- { CLOSED, OPENED }
+					section = { "", "" },
+					item = { "", "" },
+					hunk = { "", "" },
+				},
+			})
 
-      vim.notify('kDiffAddHighlight', vim.log.levels.INFO)
-      vim.api.nvim_set_hl(0, 'NeogitDiffAddHighlight', { fg = "#0e1000", bg = "#008000" })
-      -- vim.api.nvim_set_hl(0, 'Comment', { fg = "#111111", bold = true })
-      -- vim.api.nvim_set_hl(0, 'Error', { fg = "#ffffff", undercurl = true })
-      -- vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
-      vim.cmd [[
+			vim.notify("kDiffAddHighlight", vim.log.levels.INFO)
+			vim.api.nvim_set_hl(0, "NeogitDiffAddHighlight", { fg = "#0e1000", bg = "#008000" })
+			-- vim.api.nvim_set_hl(0, 'Comment', { fg = "#111111", bold = true })
+			-- vim.api.nvim_set_hl(0, 'Error', { fg = "#ffffff", undercurl = true })
+			-- vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
+			vim.cmd([[
         hi def link NeogitDiffAddHighlight kDiffAddHighlight
         " hi def linkNeogitDiffDeleteHighlight guibg=#0e1000 guifg=#ff0000
         " hi def NeogitDiffContextHighlight guibg=#0e1000 guifg=#b2b2b2
         " hi def NeogitHunkHeader guifg=#cccccc guibg=#404040
         " hi def NeogitHunkHeaderHighlight guifg=#cccccc guibg=#4d4d4d
-      ]]
-    end,
+      ]])
+		end,
 		keys = {
 			{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
 		},
@@ -159,32 +149,89 @@ local M = {
 		},
 	},
 	["NvChad/nvim-colorizer.lua"] = {
-		cmd = {'ColorizerToggle'},
+		cmd = { "ColorizerToggle" },
 		config = function()
-      require 'colorizer'.setup()
-    end,
+			require("colorizer").setup()
+		end,
 	},
 
-  ["rcarriga/nvim-dap-ui"] = {
-    lazy = true,
-  },
-  ['mfussenegger/nvim-dap'] = {
-    lazy = true,
-    config = function()
-      require('modules.tools.config.dap')
-    end
-  },
-  ["natecraddock/workspaces.nvim"] = {
-    cmd = {'WorkspacesList', 'WorkspacesAdd', 'WorkspacesRemove', 'WorkspacesOpen'},
-    config = function()
-      require("workspaces").setup({
-          hooks = {
-              open = { "bufdo bdelete", "NvimTreeToggle", "Telescope find_files" },
+	["rcarriga/nvim-dap-ui"] = {
+		lazy = true,
+		config = true,
+		dependencies = {
+			"mfussenegger/nvim-dap",
+		},
+	},
+	["mfussenegger/nvim-dap"] = {
+		lazy = true,
+		keys = require("modules.tools.keymap").dap,
+		config = function()
+			require("modules.tools.config.dap")
+		end,
+	},
+	["natecraddock/workspaces.nvim"] = {
+		cmd = { "WorkspacesList", "WorkspacesAdd", "WorkspacesRemove", "WorkspacesOpen" },
+		config = function()
+			require("workspaces").setup({
+				hooks = {
+					open = { "bufdo bdelete", "NvimTreeToggle", "Telescope find_files" },
+				},
+			})
+		end,
+		keys = require("modules.tools.keymap").workspace,
+	},
+
+	-- Lua
+	["folke/zen-mode.nvim"] = {
+		config = function()
+			require("zen-mode").setup()
+		end,
+		keys = {
+			{
+				"<C-x>",
+				function()
+					require("zen-mode").toggle({
+						window = {
+							width = 0.85, -- width will be 85% of the editor width
+						},
+					})
+				end,
+				desc = "ZenMode",
+			},
+		},
+	},
+
+	-- Lua
+	["folke/twilight.nvim"] = {
+		lazy = true,
+		config = function()
+			require("twilight").setup({})
+		end,
+		-- keys = { "<leader>xt", "<cmd>Twilight<cr>", desc = "Twilight toggle"},
+	},
+
+	["nvim-neorg/neorg"] = {
+		ft = "norg",
+		build = ":Neorg sync-parsers", -- This is the important bit!
+		config = function()
+			require("neorg").setup({
+				load = {
+					["core.defaults"] = {},
+					["core.integrations.nvim-cmp"] = {},
+					["core.norg.completion"] = {
+						config = { -- Note that this table is optional and doesn't need to be provided
+							engine = "nvim-cmp",
+						},
+					},
+          ["core.norg.concealer"] = {
+            config = { -- Note that this table is optional and doesn't need to be provided
+            -- Configuration here
+            }
           }
-      })
-    end,
-    keys = require('modules.tools.keymap').workspace,
-  }
+				},
+			})
+		end,
+	},
 }
 
 return M

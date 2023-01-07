@@ -5,26 +5,27 @@ local opts = {
 	silent = true,
 }
 
+local util = require("utils")
+
+vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
+
+-- save in insert mode
+vim.keymap.set({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>")
+vim.keymap.set("n", "<leader>ts", function() util.toggle("spell") end, { desc = "Spelling" })
+vim.keymap.set("n", "<leader>tw", function() util.toggle("wrap") end, { desc = "Word Wrap" })
+vim.keymap.set("n", "<leader>tn", function() util.toggle("relativenumber", true) util.toggle("number") end, { desc = "Line Numbers" })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+
 M.nmap = {
-	["<C-h>"] = { "<C-w>h", "switch to left", opts },
-	["<C-l>"] = { "<C-w>l", "switch to right", opts },
-	["<C-j>"] = { "<C-w>j", "switch to down", opts },
-	["<C-k>"] = { "<C-w>k", "switch to up", opts },
+	["<A-h>"] = { "<C-w>h", "switch to left", opts },
+	["<A-l>"] = { "<C-w>l", "switch to right", opts },
+	["<A-j>"] = { "<C-w>j", "switch to down", opts },
+	["<A-k>"] = { "<C-w>k", "switch to up", opts },
 
-	-- ['gp'] = { '<cmd>Lspsaga peek_definition<cr>', "peek definition", opts },
-	-- ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "diagnostic_jump_prev", opts },
-	-- ["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "diagnostic_jump_next", opts },
-
-	-- ["K"] = { "<cmd>Lspsaga hover_doc<CR>", "hover doc", opts },
-  -- ['<leader>,'] = {"<cmd>Telescope buffers show_all_buffers=true<cr>", "search buffers", opts},
 	["<leader>"] = {
 		b = {
 			name = "Buffer",
-			-- l = { "<cmd>BufferLineCycleNext<cr>", "Goto Next Buffer", opts },
-			-- h = { "<cmd>BufferLineCyclePrev<cr>", "Goto Prev Buffer", opts },
-			-- d = { "<cmd>bd<cr>", "Close Current Buffer", opts },
-			-- s = { "<cmd>BufferLinePick<cr>", "Pick Buffer", opts },
-			-- p = { "<cmd>BufferLineTogglePin<cr>", "Pin Current Buffer", opts },
 		},
 
 		c = {
@@ -42,12 +43,6 @@ M.nmap = {
 		},
 		f = {
 			name = "Find",
-			-- f = { "<cmd>Telescope find_files<cr>", "find files", opts },
-			-- g = { "<cmd>Telescope live_grep<cr>", "live grep", opts },
-			-- b = { "<cmd>Telescope buffers<cr>", "find buffers", opts },
-			-- h = { "<cmd>Telescope help_tags<cr>", "find help tags", opts },
-			-- d = { "<cmd>Telescope file_browser<cr>", "file_browser", opts },
-			-- r = { "<cmd>Telescope oldfiles<cr>", "recent file", opts },
 		},
 		g = {
 			name = "Git",
@@ -66,10 +61,14 @@ M.nmap = {
 		o = {
 			name = "Open",
 			-- e = { "<cmd>NvimTreeToggle<cr>", "toggle nvimtree" },
-			t = { "<cmd>Lspsaga open_floaterm<CR>", "open floaterm", opts },
-			g = { "<cmd>Lspsaga open_floaterm lazygit<CR>", "open lazygit", opts },
+			-- t = { function() util.float_term(nil, { cwd = util.get_root() }) end, "open floaterm(ROOT)", opts },
+			T = { function() util.float_term() end, "open floaterm(cwd)", opts },
+      t = { "<cmd>Lspsaga open_floaterm<CR>", "open floaterm", opts },
 		},
 
+    t = {
+      name = "toggle",
+    },
 		h = {
 			name = "Help",
 			r = {
@@ -116,7 +115,12 @@ M.nmap = {
       name = "Project",
     },
     w = {
-      name = "Workspace",
+      name = "Window | Workspace",
+      w = { "<C-w>w", "switch window", opts },
+    },
+    q = {
+      name = "Quit",
+      q = {"<cmd>:qa<cr>", "Quit All", opts},
     }
 	},
 }

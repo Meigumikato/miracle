@@ -60,22 +60,22 @@ local function common_on_attach(client, bufnr)
 
   map("[e",
     function()
-      require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+      require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
     end, { desc = "Next Error" })
 
   map("]e",
     function()
-      require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+      require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
     end, { desc = "Next Error" })
 
   map("[w",
     function()
-      require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.WARN })
+      require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.WARN })
     end, { desc = "Next Warning" })
 
   map("]w",
     function()
-      require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.WARN })
+      require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.WARN })
     end, { desc = "Next Warning" })
 	-- map("]e", M.diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
 	-- map("[e", M.diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })

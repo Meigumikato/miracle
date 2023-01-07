@@ -184,6 +184,13 @@ local options = {
 				"NeogitPopup",
 				"DiffviewFileHistory",
 				"NeogitCommitView",
+        "dapui_scopes",
+        "dapui_breakpoints",
+        "dapui_stacks",
+        "dapui_watches",
+        "dap-repl",
+        "dapui_console",
+
 			},
 			-- winbar = { 'NvimTree', 'dashboard', 'Trouble', 'quickfix', 'DiffviewFiles', 'lspsagaoutline',
 			--   'NeogitStatus', 'help' },
