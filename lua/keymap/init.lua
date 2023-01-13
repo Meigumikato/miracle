@@ -8,7 +8,6 @@ local opts = {
 local util = require("utils")
 
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
-
 -- save in insert mode
 vim.keymap.set({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>")
 vim.keymap.set("n", "<leader>ts", function() util.toggle("spell") end, { desc = "Spelling" })
@@ -17,11 +16,16 @@ vim.keymap.set("n", "<leader>tn", function() util.toggle("relativenumber", true)
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
+vim.keymap.set("n", "<A-h>", "<C-h>", { desc = "focus on left" })
+vim.keymap.set("n", "<A-l>", "<C-l>", { desc = "focus on right" })
+vim.keymap.set("n", "<A-j>", "<C-j>", { desc = "focus on down" })
+vim.keymap.set("n", "<A-k>", "<C-k>", { desc = "focus on left" })
+
 M.nmap = {
-	["<A-h>"] = { "<C-w>h", "switch to left", opts },
-	["<A-l>"] = { "<C-w>l", "switch to right", opts },
-	["<A-j>"] = { "<C-w>j", "switch to down", opts },
-	["<A-k>"] = { "<C-w>k", "switch to up", opts },
+	-- ["<A-h>"] = { "<C-w>h", "switch to left", opts },
+	-- ["<A-l>"] = { "<C-w>l", "switch to right", opts },
+	-- ["<A-j>"] = { "<C-w>j", "switch to down", opts },
+	-- ["<A-k>"] = { "<C-w>k", "switch to up", opts },
 
 	["<leader>"] = {
 		b = {

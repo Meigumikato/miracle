@@ -217,6 +217,7 @@ local function config()
 			{ name = "nvim_lsp_signature_help" },
 			{ name = "neorg" },
 			{ name = "emoji" },
+			{ name = "crates" },
 		},
 	}
 

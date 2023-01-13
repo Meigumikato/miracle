@@ -30,13 +30,12 @@ M.telescope = {
 }
 
 M.trouble = {
-  { "<leader>stt", "<cmd>TODOTrouble<cr>", desc = "TODO Trouble" },
+	{ "<leader>stt", "<cmd>TODOTrouble<cr>", desc = "TODO Trouble" },
 	{ "<leader>mdt", "<cmd>TroubleToggle<cr>", desc = "TroubleToggle" },
 	{ "<leader>mdw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics" },
-	{ "<leader>mdd", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics"},
-  { "<leader>mdo", "<cmd>TroubleToggle loclist<cr>", desc = "Trouble Loclist"},
+	{ "<leader>mdd", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics" },
+	{ "<leader>mdo", "<cmd>TroubleToggle loclist<cr>", desc = "Trouble Loclist" },
 }
-
 
 M.workspace = {
 	{ "<leader>wa", "<cmd>WorkspacesAdd<cr>", desc = "Workspace Add" },
@@ -44,16 +43,76 @@ M.workspace = {
 }
 
 M.dap = {
-  { "<leader>dl", function () require('dap').launch() end, desc = "DAP launch" },
-  { "<leader>dd", function () require('dap').teminate() end, desc = "DAP launch" },
-  { "<leader>dr", function () require('dap').run() end, desc = "DAP run" },
-  { "<leader>dc", function () require('dap').continue() end, desc = "DAP contine" },
-  { "<leader>dsi", function () require('dap').step_into() end, desc = "DAP step into" },
-  { "<leader>dso", function () require('dap').step_out() end, desc = "DAP step into" },
-  { "<leader>dsx", function () require('dap').step_over() end, desc = "DAP step over" },
-  { "<leader>dba", function () require('dap').toggle_breakpoint() end, desc = "DAP toggle breakpoint" },
-  { "<leader>dbd", function () require('dap').clear_breakpoints() end, desc = "DAP clear breakpoint" },
-  { "<leader>dbl", function () require('dap').list_breakpoints() end, desc = "DAP clear breakpoint" },
+	{
+		"<leader>dl",
+		function()
+			require("dap").launch()
+		end,
+		desc = "DAP launch",
+	},
+	{
+		"<leader>dd",
+		function()
+			require("dap").teminate()
+		end,
+		desc = "DAP launch",
+	},
+	{
+		"<leader>dr",
+		function()
+			require("dap").run()
+		end,
+		desc = "DAP run",
+	},
+	{
+		"<leader>dc",
+		function()
+			require("dap").continue()
+		end,
+		desc = "DAP contine",
+	},
+	{
+		"<leader>dsi",
+		function()
+			require("dap").step_into()
+		end,
+		desc = "DAP step into",
+	},
+	{
+		"<leader>dso",
+		function()
+			require("dap").step_out()
+		end,
+		desc = "DAP step into",
+	},
+	{
+		"<leader>dsx",
+		function()
+			require("dap").step_over()
+		end,
+		desc = "DAP step over",
+	},
+	{
+		"<leader>dba",
+		function()
+			require("dap").toggle_breakpoint()
+		end,
+		desc = "DAP toggle breakpoint",
+	},
+	{
+		"<leader>dbd",
+		function()
+			require("dap").clear_breakpoints()
+		end,
+		desc = "DAP clear breakpoint",
+	},
+	{
+		"<leader>dbl",
+		function()
+			require("dap").list_breakpoints()
+		end,
+		desc = "DAP clear breakpoint",
+	},
 }
 
 return M

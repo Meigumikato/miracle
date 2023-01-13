@@ -1,116 +1,157 @@
 local M = {
 
-  ['glepnir/dashboard-nvim'] = {
-    event = "BufWinEnter",
-    config = require('modules.ui.config.dashboard'),
-  },
+	["ellisonleao/gruvbox.nvim"] = {
+    enabled = false,
+		priority = 1000,
+		config = function()
+			require("gruvbox").setup({
 
-  ['folke/tokyonight.nvim'] = {
-    priority = 1000,
-    config = require('modules.ui.config.tokyonight'),
-  },
-  -- ['sainnhe/gruvbox-material'] = {
-  --   priority = 1000,
-  --   config = function ()
-  --     vim.g.gruvbox_material_background = 'hard'
-  --     vim.g.gruvbox_material_better_performance = 1
-  --     vim.api.nvim_command('colorscheme gruvbox-material')
-  --   end,
-  -- },
+				contrast = "hard",
+				palette_overrides = {},
+				-- overrides = {
+				--   SignColumn = {bg = "#ff9900"}
+				-- }
+			})
+			vim.api.nvim_command("colorscheme gruvbox")
+		end,
+	},
+	["glepnir/dashboard-nvim"] = {
+		event = "BufWinEnter",
+		config = require("modules.ui.config.dashboard"),
+	},
 
-  ['nvim-tree/nvim-tree.lua'] = {
-    cmd = { 'NvimTreeToggle', 'NvimTreeFocus', 'NvimTreeOpen' },
-    keys = require("modules.ui.keymap").nvimtree,
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
-    config = require('modules.ui.config.nvimtree'),
-  },
+	['folke/tokyonight.nvim'] = {
+    enabled = true,
+	  priority = 1000,
+	  config = require('modules.ui.config.tokyonight'),
+	},
+	-- ['sainnhe/gruvbox-material'] = {
+	--   priority = 1000,
+	--   config = function ()
+	--     vim.g.gruvbox_material_background = 'hard'
+	--     vim.g.gruvbox_material_better_performance = 1
+	--     vim.api.nvim_command('colorscheme gruvbox-material')
+	--   end,
+	-- },
 
-  ['akinsho/bufferline.nvim'] = {
-    event = { "BufAdd" },
-    keys = require("modules.ui.keymap").bufferline,
-    tag = "v3.1.0",
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
-    config = require('modules.ui.config.bufferline'),
-  },
-  ["folke/todo-comments.nvim"] = {
-    cmd = { "TodoTrouble", "TodoTelescope" },
-    event = "BufReadPost",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = require('modules.ui.config.todocomment'),
-  },
+	["nvim-tree/nvim-tree.lua"] = {
+		cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen" },
+		keys = require("modules.ui.keymap").nvimtree,
+		dependencies = { "kyazdani42/nvim-web-devicons" },
+		config = require("modules.ui.config.nvimtree"),
+	},
 
-  ['nvim-lualine/lualine.nvim'] = {
-    event = { "BufNewFile", "BufReadPost" },
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
-    config = function()
-      require('modules.ui.config.lualine')
+	["akinsho/bufferline.nvim"] = {
+		event = { "BufAdd" },
+		keys = require("modules.ui.keymap").bufferline,
+		tag = "v3.1.0",
+		dependencies = { "kyazdani42/nvim-web-devicons" },
+		config = require("modules.ui.config.bufferline"),
+	},
+	["folke/todo-comments.nvim"] = {
+		cmd = { "TodoTrouble", "TodoTelescope" },
+		event = "BufReadPost",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = require("modules.ui.config.todocomment"),
+	},
+
+	["nvim-lualine/lualine.nvim"] = {
+		event = { "BufNewFile", "BufReadPost" },
+		dependencies = { "kyazdani42/nvim-web-devicons" },
+		config = function()
+			require("modules.ui.config.lualine")
+		end,
+	},
+
+	["folke/lsp-colors.nvim"] = {
+		event = "LspAttach",
+		config = function()
+			require("lsp-colors").setup({
+				Error = "#db4b4b",
+				Warning = "#e0af68",
+				Information = "#0db9d7",
+				Hint = "#10B981",
+			})
+		end,
+	},
+
+	["j-hui/fidget.nvim"] = {
+		event = "LspAttach",
+		config = function()
+			require("fidget").setup()
+		end,
+	},
+
+	["simrat39/symbols-outline.nvim"] = {
+		cmd = { "SymbolsOutline" },
+		config = function()
+			require("symbols-outline").setup()
+		end,
+	},
+
+	["rcarriga/nvim-notify"] = {
+		config = function()
+			vim.notify = require("notify")
+		end,
+    opts = {
+      timeout = 3000,
+      max_height = function()
+        return math.floor(vim.o.lines * 0.75)
+      end,
+      max_width = function()
+        return math.floor(vim.o.columns * 0.75)
+      end,
+    },
+	},
+
+  ["stevearc/dressing.nvim"] = {
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.input(...)
+      end
     end,
   },
 
-  ['folke/lsp-colors.nvim'] = {
-    event = 'LspAttach',
-    config = function()
-      require("lsp-colors").setup({
-        Error = "#db4b4b",
-        Warning = "#e0af68",
-        Information = "#0db9d7",
-        Hint = "#10B981"
-      })
-    end
-  },
 
-  ['j-hui/fidget.nvim'] = {
-    event = 'LspAttach',
-    config = function()
-      require('fidget').setup()
-    end
-  },
+	-- ["stevearc/dressing.nvim"] = {
+	--   config = require('modules.ui.config.dressing'),
+	-- },
+	-- Packer
+	-- ["folke/noice.nvim"] = {
+	--   config = function()
+	--     vim.notify = require("notify")
+	--     require('modules.ui.config.noice')
+	--   end,
+	--   dependencies = {
+	--     "MunifTanjim/nui.nvim",
+	--     "rcarriga/nvim-notify",
+	--   }
+	-- }
+	--
 
-  ['simrat39/symbols-outline.nvim'] = {
-    cmd = { 'SymbolsOutline' },
-    config = function()
-      require("symbols-outline").setup()
-    end
-  },
-
-  ['rcarriga/nvim-notify'] = {
-    config = function()
-      vim.notify = require("notify")
-    end
-  },
-  -- ["stevearc/dressing.nvim"] = {
-  --   config = require('modules.ui.config.dressing'),
-  -- },
-  -- Packer
-  -- ["folke/noice.nvim"] = {
-  --   config = function()
-  --     vim.notify = require("notify")
-  --     require('modules.ui.config.noice')
-  --   end,
-  --   dependencies = {
-  --     "MunifTanjim/nui.nvim",
-  --     "rcarriga/nvim-notify",
-  --   }
-  -- }
-  --
-
-  -- ["utilyre/barbecue.nvim"] = {
-  --   -- event = 'LspAttach',
-  --   branch = "dev", -- omit this if you only want stable updates
-  --   dependencies = {
-  --     "neovim/nvim-lspconfig",
-  --     "smiteshp/nvim-navic",
-  --     "kyazdani42/nvim-web-devicons", -- optional dependency
-  --   },
-  --   config = function ()
-  --     require("barbecue").setup {
-  --       -- attach_navic = true,
-  --       -- create_autocmd = false,
-  --       -- exclude_filetypes = { "toggleterm", "dashboard", "quickfix", "nvimtree" },
-  --     }
-  --   end
-  -- }
+	-- ["utilyre/barbecue.nvim"] = {
+	--   -- event = 'LspAttach',
+	--   branch = "dev", -- omit this if you only want stable updates
+	--   dependencies = {
+	--     "neovim/nvim-lspconfig",
+	--     "smiteshp/nvim-navic",
+	--     "kyazdani42/nvim-web-devicons", -- optional dependency
+	--   },
+	--   config = function ()
+	--     require("barbecue").setup {
+	--       -- attach_navic = true,
+	--       -- create_autocmd = false,
+	--       -- exclude_filetypes = { "toggleterm", "dashboard", "quickfix", "nvimtree" },
+	--     }
+	--   end
+	-- }
 }
-
 
 return M

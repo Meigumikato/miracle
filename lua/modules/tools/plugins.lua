@@ -17,16 +17,25 @@ local M = {
 	},
 
 	["folke/which-key.nvim"] = {
-		event = "VeryLazy",
+		-- event = "VeryLazy",
+    keys = {
+      {' '},
+    },
 		dependencies = {
-			"mrjones2014/legendary.nvim",
+			-- "mrjones2014/legendary.nvim",
 		},
 		config = require("modules.tools.config.whichkey"),
 	},
-	["mrjones2014/legendary.nvim"] = {
-		event = "VeryLazy",
-		config = require("modules.tools.config.legendary"),
-	},
+  ["dstein64/vim-startuptime"] = {
+    cmd = "StartupTime",
+    config = function()
+      vim.g.startuptime_tries = 10
+    end,
+  },
+	-- ["mrjones2014/legendary.nvim"] = {
+	-- 	event = "VeryLazy",
+	-- 	config = require("modules.tools.config.legendary"),
+	-- },
 
 	["williamboman/mason-lspconfig.nvim"] = {
 		cmd = { "LspInstall", "LspUnistall" },
@@ -60,7 +69,9 @@ local M = {
 		config = function()
 			require("modules.tools.config.null_ls")
 		end,
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = {
+      "nvim-lua/plenary.nvim"
+    },
 	},
 
 	["folke/trouble.nvim"] = {
@@ -76,7 +87,7 @@ local M = {
 	},
 
 	["lewis6991/gitsigns.nvim"] = {
-		event = "BufReadPost",
+		event = "VeryLazy",
 		config = function()
 			require("modules.tools.config.gitsign")
 		end,
@@ -210,28 +221,28 @@ local M = {
 		-- keys = { "<leader>xt", "<cmd>Twilight<cr>", desc = "Twilight toggle"},
 	},
 
-	["nvim-neorg/neorg"] = {
-		ft = "norg",
-		build = ":Neorg sync-parsers", -- This is the important bit!
-		config = function()
-			require("neorg").setup({
-				load = {
-					["core.defaults"] = {},
-					["core.integrations.nvim-cmp"] = {},
-					["core.norg.completion"] = {
-						config = { -- Note that this table is optional and doesn't need to be provided
-							engine = "nvim-cmp",
-						},
-					},
-          ["core.norg.concealer"] = {
-            config = { -- Note that this table is optional and doesn't need to be provided
-            -- Configuration here
-            }
-          }
-				},
-			})
-		end,
-	},
+	-- ["nvim-neorg/neorg"] = {
+	-- 	ft = "norg",
+	-- 	build = ":Neorg sync-parsers", -- This is the important bit!
+	-- 	config = function()
+	-- 		require("neorg").setup({
+	-- 			load = {
+	-- 				["core.defaults"] = {},
+	-- 				["core.integrations.nvim-cmp"] = {},
+	-- 				["core.norg.completion"] = {
+	-- 					config = { -- Note that this table is optional and doesn't need to be provided
+	-- 						engine = "nvim-cmp",
+	-- 					},
+	-- 				},
+	--          ["core.norg.concealer"] = {
+	--            config = { -- Note that this table is optional and doesn't need to be provided
+	--            -- Configuration here
+	--            }
+	--          }
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 }
 
 return M

@@ -1,7 +1,5 @@
 local M = {}
 
-
-M.plugins = require('modules.tools.plugins')
-
+M.plugins = require("modules.tools.plugins")
 
 return M
