@@ -20,18 +20,22 @@ local lazy_options = {
     -- import LazyVim plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "plugins" },
     -- import/override with your plugins
     { import = "ui" },
     { import = "langs.gopls" },
     { import = "langs.bash" },
     { import = "langs.cmake" },
+    { import = "langs.rust_analyzer" },
+    { import = "langs.clangd" },
     { import = "tools.lspsaga" },
+    { import = "tools.neorg" },
     { import = "tools.navi" },
+
+    { import = "plugins" },
     -- { import = "tools" },
   },
-  defaults = { lazy = true, version = "*" },
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  defaults = { lazy = false, version = "*" },
+  install = { colorscheme = { "tokyonight", "habamax", "moonbow" } },
   checker = { enabled = false },
   performance = {
     rtp = {
