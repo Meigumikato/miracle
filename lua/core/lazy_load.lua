@@ -34,9 +34,9 @@ local lazy_options = {
     { import = "plugins" },
     -- { import = "tools" },
   },
-  defaults = { lazy = false, version = "*" },
+  defaults = { lazy = false, version = false },
   install = { colorscheme = { "tokyonight", "habamax", "moonbow" } },
-  checker = { enabled = false },
+  checker = { enabled = true },
   performance = {
     rtp = {
       disabled_plugins = {

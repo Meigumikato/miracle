@@ -1,1 +1,1 @@
-require("core.lazy_load").load_config()
+require("config.lazy").load_config()
