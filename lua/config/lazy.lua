@@ -28,6 +28,7 @@ local lazy_options = {
     { import = "langs.rust_analyzer" },
     { import = "langs.clangd" },
     { import = "tools.lspsaga" },
+    { import = "langs.python" },
     { import = "tools.neorg" },
     { import = "tools.navi" },
 

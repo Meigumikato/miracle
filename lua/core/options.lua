@@ -2,8 +2,8 @@ vim.g.mapleader = " "
 vim.g.localleader = " "
 vim.g.theme_switcher_loader = true
 
-vim.o.background = 'dark'
-vim.o.completeopt = 'menu,menuone,preview,noselect'
+vim.o.background = "dark"
+vim.o.completeopt = "menu,menuone,preview,noselect"
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -28,7 +28,7 @@ vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
 vim.opt.cmdheight = 1
 vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.grepprg = "rg --vimgrep"
-vim.opt.guifont = ("FiraCode Nerd Font:h14:b")
+vim.opt.guifont = "FiraCode Nerd Font:h14:b"
 vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 vim.opt.pumblend = 10 -- Popup blend
 vim.opt.pumheight = 10 -- Maximum number of entries in a popup
@@ -41,10 +41,8 @@ vim.opt.splitbelow = true -- Put new windows below current
 -- vim.opt.splitkeep = "screen"
 vim.opt.splitright = true -- Put new windows right of current
 
-
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
-
 
 if vim.g.neovide then
   vim.g.neovide_hide_mouse_when_typing = true
@@ -53,5 +51,8 @@ if vim.g.neovide then
   vim.g.neovide_cursor_vfx_mode = "ripple"
 end
 
+vim.diagnostic.config({
+  update_in_insert = false,
+})
 -- vim.cmd([[colorscheme tokyonight-night]])
 -- vim.o.winbar = " %{%v:lua.require'nvim-navic'.get_location()%} "
