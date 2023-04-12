@@ -34,7 +34,7 @@ return {
                 "--background-index",
                 "--pch-storage=memory",
                 -- You MUST set this arg ↓ to your c/cpp compiler location (if not included)!
-                "--query-driver=/usr/local/opt/gcc/bin/g++-12,/usr/local/opt/gcc/bin/gcc-12",
+                "--query-driver=/usr/local/bin/g++-*,/usr/local/opt/llvm/bin/clang*",
                 "--clang-tidy",
                 -- "--all-scopes-completion",
                 "--completion-style=detailed",

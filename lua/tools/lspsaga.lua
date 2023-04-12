@@ -20,7 +20,7 @@ return {
       { "gh", "<cmd>Lspsaga lsp_finder<CR>", desc = "lspsaga lsp_finder" },
 
       -- Code action
-      { "<leader>ca", "<cmd>Lspsaga code_action<CR>", desc = "lspsaga code action" },
+      -- { "<leader>ca", "<cmd>Lspsaga code_action<CR>", desc = "lspsaga code action" },
 
       -- Peek definition
       -- You can edit the file containing the definition in the floating window
@@ -31,7 +31,7 @@ return {
 
       -- Floating terminal
       { "<A-d>", "<cmd>Lspsaga term_toggle<CR>", desc = "lspsaga term toggle" },
-      { "K", "<cmd>Lspsaga hover_doc<CR>", desc = "lspsaga hover doc" },
+      -- { "K", "<cmd>Lspsaga hover_doc<CR>", desc = "lspsaga hover doc" },
     },
   },
   {
