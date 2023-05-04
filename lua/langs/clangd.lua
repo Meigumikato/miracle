@@ -15,6 +15,17 @@ return {
     end,
   },
   {
+    "jose-elias-alvarez/null-ls.nvim",
+    opts = function(_, opts)
+      local nls = require("null-ls")
+      vim.list_extend(opts.sources, {
+        nls.builtins.formatting.clang_format.with({
+          extra_args = { "--style=file", "--fallback-style=Google" },
+        }),
+      }, 1, 1)
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
       {

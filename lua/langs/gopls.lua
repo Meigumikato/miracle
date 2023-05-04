@@ -17,6 +17,42 @@ return {
     end,
   },
   {
+    "mfussenegger/nvim-dap",
+    config = function()
+      local dap = require("dap")
+      dap.adapters.go = {
+        type = "executable",
+        command = vim.fn.stdpath("data") .. "/mason/bin/go-debug-adapter",
+        -- args = { os.getenv("HOME") .. "/dev/golang/vscode-go/dist/debugAdapter.js" },
+      }
+      dap.configurations.go = {
+        {
+          type = "go",
+          name = "Debug",
+          request = "launch",
+          showLog = false,
+          program = "${file}",
+          dlvToolPath = vim.fn.exepath("dlv"), -- Adjust to where delve is installed
+        },
+        {
+          name = "Connect to server",
+          type = "go",
+          request = "attach",
+          -- debugAdapter = "dlv-dap",
+          mode = "remote",
+          -- remotePath = "${workspaceFolder}",
+          host = "10.179.44.218",
+          port = 8080,
+          substitutePath = {
+            { from = "${workspaceFolder}", to = "/root/duse_statistic" },
+          },
+          stopOnEntry = true,
+          apiVersion = 1,
+        },
+      }
+    end,
+  },
+  {
     "williamboman/mason.nvim",
     opts = function(_, opts)
       ---@diagnostic disable-next-line: missing-parameter
