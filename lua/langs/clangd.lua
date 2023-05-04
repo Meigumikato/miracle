@@ -55,7 +55,7 @@ return {
               },
               -- on_attach = require("modules.lang").on_attach,
               capabilities = opts.capabilities,
-              single_file_support = true,
+              single_file_support = false,
             },
           }
           require("clangd_extensions").setup(clangd_opts)
