@@ -18,3 +18,8 @@ keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
 
 -- Floating terminal
 keymap({ "n", "t" }, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
+
+vim.keymap.del("n", "<C-l>")
+vim.keymap.del("n", "<C-h>")
+vim.keymap.del("n", "<C-j>")
+vim.keymap.del("n", "<C-k>")

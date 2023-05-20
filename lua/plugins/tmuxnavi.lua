@@ -1,3 +1,6 @@
 return {
-  { "christoomey/vim-tmux-navigator" },
+  -- { "aserowy/tmux.nvim" },
+  {
+    "christoomey/vim-tmux-navigator",
+  },
 }
