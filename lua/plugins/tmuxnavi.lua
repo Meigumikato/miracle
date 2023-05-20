@@ -1,6 +1,12 @@
 return {
-  -- { "aserowy/tmux.nvim" },
   {
-    "christoomey/vim-tmux-navigator",
+    "aserowy/tmux.nvim",
+    config = true,
+    -- config = function()
+    --   return require("tmux").setup()
+    -- end,
   },
+  -- {
+  --   "christoomey/vim-tmux-navigator",
+  -- },
 }
