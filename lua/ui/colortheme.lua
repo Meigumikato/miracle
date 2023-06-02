@@ -60,6 +60,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
+      -- colorscheme = "moonbow",
       colorscheme = "moonbow",
     },
   },
