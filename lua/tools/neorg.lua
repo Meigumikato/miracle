@@ -1,5 +1,4 @@
 return {
-  { "ianding1/leetcode.vim" },
   -- {
   --   "nvim-treesitter/nvim-treesitter",
   --   opts = function(_, opts)

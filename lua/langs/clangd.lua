@@ -6,7 +6,7 @@ return {
       vim.list_extend(opts.ensure_installed, { "cpp", "c" })
     end,
   },
-
+  --
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
@@ -20,16 +20,23 @@ return {
       local nls = require("null-ls")
       vim.list_extend(opts.sources, {
         nls.builtins.formatting.clang_format.with({
-          extra_args = { "--style=file", "--fallback-style=Google" },
+          extra_args = { "--fallback-style=Google" },
         }),
-      }, 1, 1)
+      })
     end,
+  },
+  {
+    "Badhi/nvim-treesitter-cpp-tools",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
       {
         "p00f/clangd_extensions.nvim",
+        keys = {
+          { "<leader>cch", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "clangd switch source header" },
+        },
       },
     },
     opts = {

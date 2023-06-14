@@ -53,10 +53,9 @@ return {
       setup = {
         rust_analyzer = function(_, opts)
           require("lazyvim.util").on_attach(function(client, buffer)
-                    -- stylua: ignore
-                    if client.name == "rust_analyzer" then
-                      vim.keymap.set("n", "K", "<CMD>RustHoverActions<CR>", { buffer = buffer })
-                    end
+            if client.name == "rust_analyzer" then
+              vim.keymap.set("n", "K", "<CMD>RustHoverActions<CR>", { buffer = buffer })
+            end
           end)
           local mason_registry = require("mason-registry")
           -- rust tools configuration for debugging support
