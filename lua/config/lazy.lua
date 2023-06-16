@@ -27,6 +27,8 @@ local lazy_options = {
     -- { import = "lazyvim.plugins.extras.ui.mini-starter" },
     { import = "lazyvim.plugins.extras.ui.edgy" },
 
+    { import = "lazyvim.plugins.extras.test.core" },
+
     -- import/override with your plugins
     { import = "ui" },
     { import = "langs.gopls" },
@@ -37,6 +39,7 @@ local lazy_options = {
     { import = "tools.lspsaga" },
     { import = "langs.python" },
     { import = "tools.neorg" },
+    { import = "tools.context" },
     { import = "tools.navi" },
     { import = "tools.refactoring" },
 

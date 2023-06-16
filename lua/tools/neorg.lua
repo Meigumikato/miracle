@@ -36,36 +36,36 @@ return {
   --   end,
   -- },
   --
-  -- {
-  --   "nvim-neorg/neorg",
-  --   -- event = "VeryLazy",
-  --   build = ":Neorg sync-parsers",
-  --   opts = {
-  --     load = {
-  --       ["core.defaults"] = {}, -- Loads default behaviour
-  --       ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
-  --       ["core.norg.completion"] = {
-  --         config = {
-  --           engine = "nvim-cmp",
-  --         },
-  --       },
-  --       ["core.norg.journal"] = {
-  --         config = {
-  --           workspace = "notes",
-  --         },
-  --       },
-  --       ["core.norg.dirman"] = { -- Manages Neorg workspaces
-  --         config = {
-  --           workspaces = {
-  --             notes = "~/Notes",
-  --           },
-  --         },
-  --       },
-  --     },
-  --   },
-  --   dependencies = {
-  --     { "nvim-lua/plenary.nvim" },
-  --     { "nvim-treesitter/nvim-treesitter" },
-  --   },
-  -- },
+  {
+    "nvim-neorg/neorg",
+    event = "VeryLazy",
+    build = ":Neorg sync-parsers",
+    opts = {
+      load = {
+        ["core.defaults"] = {}, -- Loads default behaviour
+        ["core.concealer"] = {}, -- Adds pretty icons to your documents
+        ["core.completion"] = {
+          config = {
+            engine = "nvim-cmp",
+          },
+        },
+        ["core.journal"] = {
+          config = {
+            workspace = "notes",
+          },
+        },
+        ["core.dirman"] = { -- Manages Neorg workspaces
+          config = {
+            workspaces = {
+              notes = "~/Notes",
+            },
+          },
+        },
+      },
+    },
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-treesitter/nvim-treesitter" },
+    },
+  },
 }
