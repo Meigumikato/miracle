@@ -1,38 +1,111 @@
 return {
   {
     "glepnir/lspsaga.nvim",
-    -- enabled = ,
-    event = "BufRead",
-    -- config = function()
-    --   require("lspsaga").setup({
-    --     lightbulb = {
-    --       enable = false,
-    --     }
-    --   })
-    -- end,
+    event = "LspAttach",
     opts = {
       lightbulb = {
         enable = false,
       },
     },
+    config = function(_, opts)
+      require("lazyvim.util").on_attach(function(_, buffer)
+        vim.keymap.set(
+          "n",
+          "gd",
+          "<CMD>Lspsaga goto_definition<CR>",
+          { buffer = buffer, desc = "Lspsaga goto_definition" }
+        )
+        vim.keymap.set("n", "gh", "<CMD>Lspsaga lsp_finder<CR>", { buffer = buffer, desc = "Lspsaga lsp_finder" })
+        vim.keymap.set(
+          "n",
+          "gp",
+          "<CMD>Lspsaga peek_definition<CR>",
+          { buffer = buffer, desc = "Lspsaga peek_definition" }
+        )
+
+        vim.keymap.set("n", "K", "<CMD>Lspsaga hover_doc<CR>", { buffer = buffer, desc = "Lspsaga hover_doc" })
+        vim.keymap.set("n", "<space>o", "<CMD>Lspsaga outline<CR>", { buffer = buffer, desc = "Lspsaga outline" })
+
+        vim.keymap.set(
+          "n",
+          "<space>ci",
+          "<CMD>Lspsaga incoming_calls<CR>",
+          { buffer = buffer, desc = "Lspsaga incoming_calls" }
+        )
+
+        vim.keymap.set(
+          "n",
+          "<space>co",
+          "<CMD>Lspsaga outgoing_calls<CR>",
+          { buffer = buffer, desc = "Lspsaga outgoing_calls" }
+        )
+
+        -- del <space>cd
+        -- vim.keymap.del("n", "<space>cd")
+
+        vim.keymap.set(
+          "n",
+          "<space>csl",
+          "<CMD>Lspsaga show_line_diagnostics<CR>",
+          { buffer = buffer, desc = "Lspsaga showshow_line_diagnostics" }
+        )
+
+        vim.keymap.set(
+          "n",
+          "<space>csw",
+          "<CMD>Lspsaga show_workspace_diagnostics<CR>",
+          { buffer = buffer, desc = "Lspsaga show_workspace_diagnostics" }
+        )
+
+        vim.keymap.set(
+          "n",
+          "<space>csb",
+          "<CMD>Lspsaga show_buf_diagnostics<CR>",
+          { buffer = buffer, desc = "Lspsaga show_buf_diagnostics" }
+        )
+
+        vim.keymap.set(
+          "n",
+          "<space>csc",
+          "<CMD>Lspsaga  show_cursor_diagnostics<CR>",
+          { buffer = buffer, desc = "Lspsaga show_cursor_diagnostics" }
+        )
+
+        vim.keymap.set("n", "<space>cr", "<CMD>Lspsaga rename<CR>", { buffer = buffer, desc = "Lspsaga rename" })
+        vim.keymap.set(
+          "n",
+          "]d",
+          "<CMD>Lspsaga diagnostic_jump_next<CR>",
+          { buffer = buffer, desc = "Lspsaga diagnostic_jump_next" }
+        )
+        vim.keymap.set(
+          "n",
+          "[d",
+          "<CMD>Lspsaga diagnostic_jump_prev<CR>",
+          { buffer = buffer, desc = "Lspsaga diagnostic_jump_prev" }
+        )
+
+        vim.keymap.set("n", "]w", function()
+          require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARN })
+        end, { buffer = buffer, desc = "Lspsaga warn_diagnostic_jump_next" })
+
+        vim.keymap.set("n", "[w", function()
+          require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.WARN })
+        end, { buffer = buffer, desc = "Lspsaga warn_diagnostic_jump_prev" })
+
+        vim.keymap.set("n", "]e", function()
+          require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+        end, { buffer = buffer, desc = "Lspsaga error_diagnostic_jump_next" })
+
+        vim.keymap.set("n", "[e", function()
+          require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+        end, { buffer = buffer, desc = "Lspsaga error_diagnostic_jump_prev" })
+      end)
+
+      require("lspsaga").setup(opts)
+    end,
+
     dependencies = { { "nvim-tree/nvim-web-devicons" } },
-    keys = {
-      { "gh", "<cmd>Lspsaga lsp_finder<CR>", desc = "lspsaga lsp_finder" },
-
-      -- Code action
-      -- { "<leader>ca", "<cmd>Lspsaga code_action<CR>", desc = "lspsaga code action" },
-
-      -- Peek definition
-      -- You can edit the file containing the definition in the floating window
-      -- It also supports open/vsplit/etc operations, do refer to "definition_action_keys"
-      -- It also supports tagstack
-      -- Use <C-t> to jump back
-      { "gp", "<cmd>Lspsaga peek_definition<CR>", desc = "lspsaga peek definition" },
-
-      -- Floating terminal
-      { "<A-d>", "<cmd>Lspsaga term_toggle<CR>", desc = "lspsaga term toggle" },
-      -- { "K", "<cmd>Lspsaga hover_doc<CR>", desc = "lspsaga hover doc" },
-    },
   },
   {
     "SmiteshP/nvm-navic",

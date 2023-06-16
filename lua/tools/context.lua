@@ -15,6 +15,15 @@ return {
   },
 
   {
+    "neovim/nvim-lspconfig",
+    opts = {
+      diagnostics = {
+        virtual_text = false,
+      },
+    },
+  },
+
+  {
     "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-emoji" },
     ---@param opts cmp.ConfigSchema
@@ -26,6 +35,8 @@ return {
   },
 
   { "folke/zen-mode.nvim" },
+
+  { "simrat39/symbols-outline.nvim" },
 
   {
     { "rouge8/neotest-rust" },
