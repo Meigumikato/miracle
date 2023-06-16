@@ -40,6 +40,7 @@ local lazy_options = {
     { import = "langs.python" },
     { import = "tools.neorg" },
     { import = "tools.context" },
+    { import = "tools.diffview" },
     { import = "tools.navi" },
     { import = "tools.refactoring" },
 

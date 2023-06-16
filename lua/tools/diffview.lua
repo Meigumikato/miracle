@@ -8,8 +8,8 @@ return {
     "DiffviewFocusFiles",
     "DiffviewRefresh",
   },
-  config = function()
-    require("diffview").setup({})
-  end,
+  -- config = function()
+  --   require("diffview").setup({})
+  -- end,
   dependencies = { "nvim-lua/plenary.nvim" },
 }
