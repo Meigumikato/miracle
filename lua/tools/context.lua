@@ -39,16 +39,19 @@ return {
   { "simrat39/symbols-outline.nvim" },
 
   {
-    { "rouge8/neotest-rust" },
-    {
-      "nvim-neotest/neotest",
-      config = function(_, opts)
-        opts.adapters = {
-          require("neotest-rust")({
-            args = { "--no-capture" },
-          }),
-        }
-      end,
+    "HiPhish/nvim-ts-rainbow2",
+    dependencies = {
+      {
+        "nvim-treesitter/nvim-treesitter",
+        opts = function(_, opts)
+          opts.rainbow = {
+            enable = true,
+            disable = {},
+            query = "rainbow-parens",
+            strategy = require("ts-rainbow").strategy.global,
+          }
+        end,
+      },
     },
   },
 }

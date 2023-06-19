@@ -26,10 +26,6 @@ return {
     end,
   },
   {
-    "Badhi/nvim-treesitter-cpp-tools",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-  },
-  {
     "neovim/nvim-lspconfig",
     dependencies = {
       {
