@@ -15,15 +15,16 @@ return {
     priority = 1000,
     opts = {
       style = "night",
-      -- transparent = true,
+      transparent = true,
     },
   },
-  { "arturgoms/moonbow.nvim" },
+  -- { "arturgoms/moonbow.nvim" },
+  { "Meigumikato/moonbow.nvim" },
   {
     "LazyVim/LazyVim",
     opts = {
-      -- colorscheme = "moonbow",
-      colorscheme = "tokyonight",
+      colorscheme = "moonbow",
+      -- colorscheme = "tokyonight",
     },
   },
 }

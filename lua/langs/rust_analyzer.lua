@@ -73,7 +73,7 @@ return {
                 auto_focus = false,
               },
               inlay_hints = {
-                auto = true,
+                auto = false,
                 show_parameter_hints = true,
               },
             },
