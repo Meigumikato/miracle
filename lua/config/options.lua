@@ -1,4 +1,5 @@
-vim.opt.guifont = "FiraCode Nerd Font:h14:b"
+vim.opt.guifont = "FiraCode Nerd Font:h12:b"
+
 vim.opt.mouse = ""
 
 vim.opt.laststatus = 3

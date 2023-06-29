@@ -40,9 +40,6 @@ return {
           { buffer = buffer, desc = "Lspsaga outgoing_calls" }
         )
 
-        -- del <space>cd
-        -- vim.keymap.del("n", "<space>cd")
-
         vim.keymap.set(
           "n",
           "<space>csl",

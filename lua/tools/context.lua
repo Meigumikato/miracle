@@ -54,4 +54,14 @@ return {
       },
     },
   },
+
+  {
+    "m4xshen/hardtime.nvim",
+    event = "VeryLazy",
+    opts = function(_, opts)
+      opts.disabled_filetypes = { "NeoTree" }
+      -- vim.notify(vim.inspect(opts), vim.log.levels.INFO)
+      -- table.insert(opts.disabled_filetypes, "Neo-Tree")
+    end,
+  },
 }

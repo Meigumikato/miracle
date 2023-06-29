@@ -24,12 +24,14 @@ local lazy_options = {
     { import = "lazyvim.plugins.extras.dap.nlua" },
     { import = "lazyvim.plugins.extras.lang.go" },
     { import = "lazyvim.plugins.extras.util.project" },
-    -- { import = "lazyvim.plugins.extras.ui.mini-starter" },
     { import = "lazyvim.plugins.extras.ui.edgy" },
 
     { import = "lazyvim.plugins.extras.test.core" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
+    { import = "lazyvim.plugins.extras.editor.mini-files" },
+    { import = "lazyvim.plugins.extras.editor.flash" },
+    { import = "lazyvim.plugins.extras.coding.yanky" },
 
     -- import/override with your plugins
     { import = "ui" },
@@ -47,7 +49,6 @@ local lazy_options = {
     { import = "tools.refactoring" },
 
     { import = "plugins" },
-    -- { import = "tools" },
   },
   defaults = { lazy = false, version = false },
   install = { colorscheme = { "tokyonight", "habamax", "moonbow" } },
@@ -56,9 +57,6 @@ local lazy_options = {
     rtp = {
       disabled_plugins = {
         "gzip",
-        -- "matchit",
-        -- "matchparen",
-        -- "netrwPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",
