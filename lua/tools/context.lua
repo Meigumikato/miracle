@@ -1,6 +1,8 @@
 return {
   {
+
     "nvim-treesitter/nvim-treesitter-context",
+    event = "BufReadPost",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
   {
@@ -34,12 +36,13 @@ return {
     end,
   },
 
-  { "folke/zen-mode.nvim" },
+  { "folke/zen-mode.nvim", cmd = "ZenMode" },
 
-  { "simrat39/symbols-outline.nvim" },
+  { "simrat39/symbols-outline.nvim", lazy = true },
 
   {
     "HiPhish/nvim-ts-rainbow2",
+    event = "BufReadPost",
     dependencies = {
       {
         "nvim-treesitter/nvim-treesitter",
@@ -55,13 +58,19 @@ return {
     },
   },
 
+  -- {
+  --   "m4xshen/hardtime.nvim",
+  --   event = "VeryLazy",
+  --   opts = function(_, opts)
+  --     opts.disabled_filetypes = { "NeoTree", "qf", "netrw", "NvimTree", "lazy", "mason" }
+  --     -- opts.resetting_keys = { ["y"] = { "v" } }
+  --   end,
+  -- },
+
   {
-    "m4xshen/hardtime.nvim",
-    event = "VeryLazy",
+    "zbirenbaum/copilot.lua",
     opts = function(_, opts)
-      opts.disabled_filetypes = { "NeoTree" }
-      -- vim.notify(vim.inspect(opts), vim.log.levels.INFO)
-      -- table.insert(opts.disabled_filetypes, "Neo-Tree")
+      opts.suggestion.enable = true
     end,
   },
 }

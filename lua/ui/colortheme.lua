@@ -1,30 +1,32 @@
 return {
-  {
-    "ellisonleao/gruvbox.nvim",
-    -- lazy = true,
-    -- priority = 1000,
-    config = function()
-      require("gruvbox").setup({
-        contrast = "hard",
-      })
-    end,
-  },
+  -- {
+  --   "ellisonleao/gruvbox.nvim",
+  --   lazy = true,
+  --   -- priority = 1000,
+  --   config = function()
+  --     require("gruvbox").setup({
+  --       contrast = "hard",
+  --     })
+  --   end,
+  -- },
   {
     "folke/tokyonight.nvim",
     lazy = true,
     priority = 1000,
     opts = {
       style = "night",
-      transparent = true,
+      -- transparent = true,
     },
   },
-  -- { "arturgoms/moonbow.nvim" },
-  { "Meigumikato/moonbow.nvim" },
+  {
+    "Meigumikato/moonbow.nvim",
+    lazy = true,
+  },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "moonbow",
-      -- colorscheme = "tokyonight",
+      -- colorscheme = "moonbow",
+      colorscheme = "tokyonight",
     },
   },
 }

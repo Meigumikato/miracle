@@ -1,41 +1,4 @@
 return {
-  -- {
-  --   "nvim-treesitter/nvim-treesitter",
-  --   opts = function(_, opts)
-  --     ---@diagnostic disable-next-line: missing-parameter
-  --     vim.list_extend(opts.ensure_installed, { "org" })
-  --     opts.highlight.additional_vim_regex_highlighting = { "org" }
-  --   end,
-  -- },
-  -- {
-  --   "hrsh7th/nvim-cmp",
-  --   opts = function(_, opts)
-  --     local cmp = require("cmp")
-  --     ---@diagnostic disable-next-line: missing-parameter
-  --     opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "orgmode" } }))
-  --   end,
-  -- },
-  -- {
-  --   "nvim-orgmode/orgmode",
-  --   config = function()
-  --     require("orgmode").setup_ts_grammar()
-  --     require("orgmode").setup({
-  --       org_agenda_files = { "~/Notes/agenda/*" },
-  --       org_default_notes_file = "~/Notes/note.org",
-  --     })
-  --   end,
-  -- },
-  -- {
-  --   "hrsh7th/nvim-cmp",
-  --   -- dependencies = { "hrsh7th/cmp-emoji" },
-  --   ---@param opts cmp.ConfigSchema
-  --   opts = function(_, opts)
-  --     local cmp = require("cmp")
-  --     ---@diagnostic disable-next-line: missing-parameter
-  --     opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "neorg" } }))
-  --   end,
-  -- },
-  --
   {
     "nvim-neorg/neorg",
     event = "VeryLazy",
@@ -54,6 +17,12 @@ return {
             workspace = "notes",
           },
         },
+        ["core.presenter"] = {
+          config = {
+            zen_mode = "zen-mode",
+          },
+        },
+        ["core.summary"] = {},
         ["core.dirman"] = { -- Manages Neorg workspaces
           config = {
             workspaces = {
@@ -61,11 +30,19 @@ return {
             },
           },
         },
+
+        ["core.integrations.telescope"] = {},
       },
     },
     dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-treesitter/nvim-treesitter" },
+      { "nvim-neorg/neorg-telescope" },
     },
   },
+  -- {
+  --   "lukas-reineke/headlines.nvim",
+  --   dependencies = { "nvim-treesitter/nvim-treesitter" },
+  --   config = true, -- or `opts = {}`
+  -- },
 }

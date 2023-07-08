@@ -8,7 +8,7 @@ return {
       },
     },
     config = function(_, opts)
-      require("lazyvim.util").on_attach(function(_, buffer)
+      require("lazyvim.util").on_attach(function(client, buffer)
         vim.keymap.set(
           "n",
           "gd",
@@ -16,14 +16,17 @@ return {
           { buffer = buffer, desc = "Lspsaga goto_definition" }
         )
         vim.keymap.set("n", "gh", "<CMD>Lspsaga lsp_finder<CR>", { buffer = buffer, desc = "Lspsaga lsp_finder" })
-        vim.keymap.set(
-          "n",
-          "gp",
-          "<CMD>Lspsaga peek_definition<CR>",
-          { buffer = buffer, desc = "Lspsaga peek_definition" }
-        )
+        -- vim.keymap.set(
+        --   "n",
+        --   "gp",
+        --   "<CMD>Lspsaga peek_definition<CR>",
+        --   { buffer = buffer, desc = "Lspsaga peek_definition" }
+        -- )
 
-        vim.keymap.set("n", "K", "<CMD>Lspsaga hover_doc<CR>", { buffer = buffer, desc = "Lspsaga hover_doc" })
+        if client.name ~= "taplo" or client.name ~= "rust_analyzer" then
+          vim.keymap.set("n", "K", "<CMD>Lspsaga hover_doc<CR>", { buffer = buffer, desc = "Lspsaga hover_doc" })
+        end
+
         vim.keymap.set("n", "<space>o", "<CMD>Lspsaga outline<CR>", { buffer = buffer, desc = "Lspsaga outline" })
 
         vim.keymap.set(
@@ -111,6 +114,7 @@ return {
 
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    event = "LspAttach",
     config = true,
   },
 }
