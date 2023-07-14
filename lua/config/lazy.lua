@@ -34,6 +34,7 @@ local lazy_options = {
     { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "lazyvim.plugins.extras.formatting.prettier" },
 
+    { import = "lazyvim.plugins.extras.lang.docker" },
     { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
@@ -42,7 +43,6 @@ local lazy_options = {
     { import = "lazyvim.plugins.extras.lang.rust" },
 
     { import = "lazyvim.plugins.extras.editor.mini-files" },
-    { import = "lazyvim.plugins.extras.editor.flash" },
     { import = "lazyvim.plugins.extras.coding.yanky" },
 
     { import = "ui" },

@@ -15,7 +15,7 @@ return {
           "<CMD>Lspsaga goto_definition<CR>",
           { buffer = buffer, desc = "Lspsaga goto_definition" }
         )
-        vim.keymap.set("n", "gh", "<CMD>Lspsaga lsp_finder<CR>", { buffer = buffer, desc = "Lspsaga lsp_finder" })
+        vim.keymap.set("n", "gh", "<CMD>Lspsaga finder<CR>", { buffer = buffer, desc = "Lspsaga lsp_finder" })
         -- vim.keymap.set(
         --   "n",
         --   "gp",
@@ -29,6 +29,12 @@ return {
 
         vim.keymap.set("n", "<space>o", "<CMD>Lspsaga outline<CR>", { buffer = buffer, desc = "Lspsaga outline" })
 
+        vim.keymap.set(
+          "n",
+          "<space>ca",
+          "<CMD>Lspsaga code_action<CR>",
+          { buffer = buffer, desc = "Lspsaga code_action" }
+        )
         vim.keymap.set(
           "n",
           "<space>ci",
