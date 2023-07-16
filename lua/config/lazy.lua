@@ -17,11 +17,9 @@ end
 
 local lazy_options = {
   spec = {
-    -- import LazyVim plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
     { import = "lazyvim.plugins.extras.coding.copilot" },
-    --
 
     { import = "lazyvim.plugins.extras.dap.core" },
     { import = "lazyvim.plugins.extras.dap.nlua" },
@@ -48,14 +46,12 @@ local lazy_options = {
     { import = "ui" },
     { import = "langs.bash" },
     { import = "langs.cmake" },
-    -- { import = "langs.clangd" },
-    --
-    -- { import = "langs.python" },
+    { import = "langs.clangd" },
+    { import = "langs.python" },
+
     { import = "tools.lspsaga" },
-    --
     { import = "tools.neorg" },
     { import = "tools.context" },
-
     { import = "tools.diffview" },
     { import = "tools.navi" },
     { import = "tools.refactoring" },
