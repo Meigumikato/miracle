@@ -26,6 +26,19 @@ return {
   },
 
   {
+    "mfussenegger/nvim-dap",
+    keys = {
+      {
+        "<leader>dvl",
+        function()
+          require("dap.ext.vscode").load_launchjs(nil, {})
+        end,
+        desc = "load_extension",
+      },
+    },
+  },
+
+  {
     "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-emoji" },
     ---@param opts cmp.ConfigSchema

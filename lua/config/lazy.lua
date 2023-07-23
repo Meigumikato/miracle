@@ -47,6 +47,7 @@ local lazy_options = {
     { import = "langs.bash" },
     { import = "langs.cmake" },
     { import = "langs.clangd" },
+    { import = "langs.go" },
     { import = "langs.python" },
 
     { import = "tools.lspsaga" },

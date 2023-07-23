@@ -5,13 +5,12 @@ return {
   },
   {
     "barrett-ruth/live-server.nvim",
-
     config = true,
-    -- build = "yarn global add live-server",
-    -- cmd = { "LiveServerStart", "LiveServerStop" },
+    cmd = { "LiveServerStart", "LiveServerStop" },
   },
   {
     "NeogitOrg/neogit",
+    keys = { { "<leader>gn", "<CMD>Neogit<CR>", desc = "neogit" } },
     opts = {
       integrations = {
         diffview = true,
