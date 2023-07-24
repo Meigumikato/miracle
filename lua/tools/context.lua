@@ -86,4 +86,9 @@ return {
       opts.suggestion.enable = true
     end,
   },
+
+  {
+    "Meigumikato/opensips.nvim",
+    ft = "opensips",
+  },
 }
