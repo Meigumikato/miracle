@@ -1,10 +1,34 @@
 return {
+
+  {
+    "neovim/nvim-lspconfig",
+    init = function()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+      keys[#keys + 1] = { "K", false }
+      keys[#keys + 1] = { "gd", false }
+      keys[#keys + 1] = { "gr", false }
+      keys[#keys + 1] = { "<space>ca", false }
+      keys[#keys + 1] = { "<space>cr", false }
+      keys[#keys + 1] = { "[e", false }
+      keys[#keys + 1] = { "]e", false }
+      keys[#keys + 1] = { "[w", false }
+      keys[#keys + 1] = { "]w", false }
+      keys[#keys + 1] = { "[d", false }
+      keys[#keys + 1] = { "]d", false }
+      keys[#keys + 1] = { "gD", false }
+      keys[#keys + 1] = { "gI", false }
+    end,
+  },
+
   {
     "glepnir/lspsaga.nvim",
     event = "LspAttach",
     opts = {
       lightbulb = {
         enable = false,
+      },
+      finder = {
+        silent = true,
       },
     },
     config = function(_, opts)
@@ -15,13 +39,15 @@ return {
           "<CMD>Lspsaga goto_definition<CR>",
           { buffer = buffer, desc = "Lspsaga goto_definition" }
         )
-        vim.keymap.set("n", "gh", "<CMD>Lspsaga finder<CR>", { buffer = buffer, desc = "Lspsaga lsp_finder" })
-        -- vim.keymap.set(
-        --   "n",
-        --   "gp",
-        --   "<CMD>Lspsaga peek_definition<CR>",
-        --   { buffer = buffer, desc = "Lspsaga peek_definition" }
-        -- )
+        vim.keymap.set(
+          "n",
+          "gD",
+          "<CMD>Lspsaga peek_definition<CR>",
+          { buffer = buffer, desc = "Lspsaga peek_definition" }
+        )
+        vim.keymap.set("n", "gI", "<CMD>Lspsaga finder imp<CR>", { buffer = buffer, desc = "Lspsaga finder imp" })
+
+        vim.keymap.set("n", "gr", "<CMD>Lspsaga finder<CR>", { buffer = buffer, desc = "Lspsaga finder" })
 
         if client.name ~= "taplo" or client.name ~= "rust_analyzer" then
           vim.keymap.set("n", "K", "<CMD>Lspsaga hover_doc<CR>", { buffer = buffer, desc = "Lspsaga hover_doc" })
