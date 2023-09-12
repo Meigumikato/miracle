@@ -53,23 +53,23 @@ return {
 
   { "simrat39/symbols-outline.nvim", lazy = true },
 
-  {
-    "HiPhish/nvim-ts-rainbow2",
-    event = "BufReadPost",
-    dependencies = {
-      {
-        "nvim-treesitter/nvim-treesitter",
-        opts = function(_, opts)
-          opts.rainbow = {
-            enable = true,
-            disable = {},
-            query = "rainbow-parens",
-            strategy = require("ts-rainbow").strategy.global,
-          }
-        end,
-      },
-    },
-  },
+  -- {
+  --   "HiPhish/nvim-ts-rainbow2",
+  --   event = "BufReadPost",
+  --   dependencies = {
+  --     {
+  --       "nvim-treesitter/nvim-treesitter",
+  --       opts = function(_, opts)
+  --         opts.rainbow = {
+  --           enable = true,
+  --           disable = {},
+  --           query = "rainbow-parens",
+  --           strategy = require("ts-rainbow").strategy.global,
+  --         }
+  --       end,
+  --     },
+  --   },
+  -- },
 
   -- {
   --   "m4xshen/hardtime.nvim",
@@ -80,15 +80,15 @@ return {
   --   end,
   -- },
 
-  {
-    "zbirenbaum/copilot.lua",
-    opts = function(_, opts)
-      opts.suggestion.enable = true
-    end,
-  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   opts = function(_, opts)
+  --     opts.suggestion.enable = true
+  --   end,
+  -- },
 
-  {
-    "Meigumikato/opensips.nvim",
-    ft = "opensips",
-  },
+  -- {
+  --   "Meigumikato/opensips.nvim",
+  --   ft = "opensips",
+  -- },
 }
