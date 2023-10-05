@@ -8,7 +8,7 @@ return {
   },
   -- -- correctly setup mason lsp / dap extensions
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     opts = function(_, opts)
       local nls = require("null-ls")
       ---@diagnostic disable-next-line: missing-parameter
