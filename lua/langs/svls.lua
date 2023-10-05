@@ -12,7 +12,7 @@ return {
       local nls = require("null-ls")
       ---@diagnostic disable-next-line: missing-parameter
       vim.list_extend(opts.sources, {
-        nls.builtins.formatting.verible_verilog_format,
+        -- nls.builtins.formatting.verible_verilog_format,
         -- nls.builtins.formatting.verible_verilog_format,
         -- nls.builtins.diagnostics.verilator,
       })
