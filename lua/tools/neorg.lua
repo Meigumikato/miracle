@@ -2,14 +2,35 @@ return {
   {
     "nvim-neorg/neorg",
     cmd = "Neorg",
+    ft = "norg",
     build = ":Neorg sync-parsers",
     opts = {
       load = {
         ["core.defaults"] = {}, -- Loads default behaviour
-        ["core.concealer"] = {}, -- Adds pretty icons to your documents
+        -- ["core.ui.calendar"] = {},
+        ["core.export"] = {},
+        ["core.export.markdown"] = {},
+        ["core.concealer"] = {
+          config = {
+            -- icon_preset = "diamond",
+          },
+        }, -- Adds pretty icons to your documents
         ["core.completion"] = {
           config = {
             engine = "nvim-cmp",
+            -- name = "[Norg]",
+          },
+        },
+        ["core.esupports.metagen"] = {
+          config = {
+            -- type = "auto",
+            -- update_date = true,
+          },
+        },
+        ["core.keybinds"] = {
+          config = {
+            default_keybinds = true,
+            neorg_leader = "<Leader>n",
           },
         },
         ["core.journal"] = {
@@ -27,6 +48,7 @@ return {
           config = {
             workspaces = {
               notes = "~/Notes",
+              works = "~/Works",
             },
           },
         },
@@ -42,6 +64,7 @@ return {
   },
   -- {
   --   "lukas-reineke/headlines.nvim",
+  --   ft = "norg",
   --   dependencies = { "nvim-treesitter/nvim-treesitter" },
   --   config = true, -- or `opts = {}`
   -- },

@@ -18,6 +18,7 @@ end
 local lazy_options = {
   spec = {
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    -- { import = "lazyvim.plugins.extras.ui.dashboard" },
 
     -- { import = "lazyvim.plugins.extras.coding.copilot" },
 
@@ -43,8 +44,7 @@ local lazy_options = {
     { import = "lazyvim.plugins.extras.lang.rust" },
     { import = "lazyvim.plugins.extras.lang.yaml" },
 
-    { import = "lazyvim.plugins.extras.ui.dashboard" },
-    { import = "lazyvim.plugins.extras.ui.edgy" },
+    -- { import = "lazyvim.plugins.extras.ui.edgy" },
 
     { import = "lazyvim.plugins.extras.editor.mini-files" },
 
