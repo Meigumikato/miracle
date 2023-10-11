@@ -18,6 +18,7 @@ end
 local lazy_options = {
   spec = {
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    { import = "lazyvim.plugins.extras.ui.dashboard" },
 
     -- { import = "lazyvim.plugins.extras.coding.copilot" },
 
@@ -43,8 +44,7 @@ local lazy_options = {
     { import = "lazyvim.plugins.extras.lang.rust" },
     { import = "lazyvim.plugins.extras.lang.yaml" },
 
-    { import = "lazyvim.plugins.extras.ui.dashboard" },
-    { import = "lazyvim.plugins.extras.ui.edgy" },
+    -- { import = "lazyvim.plugins.extras.ui.edgy" },
 
     { import = "lazyvim.plugins.extras.editor.mini-files" },
 
@@ -58,17 +58,10 @@ local lazy_options = {
     { import = "langs.go" },
     { import = "langs.python" },
 
-    { import = "tools.lspsaga" },
-    { import = "tools.neorg" },
-    { import = "tools.context" },
-    { import = "tools.diffview" },
-    { import = "tools.navi" },
-    { import = "tools.refactoring" },
-
     { import = "plugins" },
   },
   defaults = { lazy = false, version = false },
-  install = { colorscheme = { "tokyonight", "habamax", "moonbow" } },
+  install = { colorscheme = { "tokyonight" } },
   checker = { enabled = true },
   performance = {
     rtp = {
