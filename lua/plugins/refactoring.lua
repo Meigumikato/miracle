@@ -5,12 +5,12 @@ return {
     { "nvim-treesitter/nvim-treesitter" },
   },
 
-  -- init = function()
-  --   require("telescope").load_extension("refactoring")
-  -- end,
-  config = function()
-    require("telescope").load_extension("refactoring")
-    require("refactoring").setup({})
+  config = function(_, opts)
+    -- require("telescope").load_extension("refactoring")
+    require("refactoring").setup(opts)
+    require("lazyvim.util").on_load("telescope.nvim", function()
+      require("telescope").load_extension("refactoring")
+    end)
   end,
 
   keys = {
