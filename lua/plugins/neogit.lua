@@ -1,5 +1,9 @@
 return {
   {
+    "sindrets/diffview.nvim",
+    cmd = "DiffviewOpen",
+  },
+  {
     "NeogitOrg/neogit",
     keys = { { "<leader>gn", "<CMD>Neogit<CR>", desc = "neogit" } },
     opts = {
