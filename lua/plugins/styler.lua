@@ -1,6 +1,7 @@
 return {
   {
     "folke/styler.nvim",
+    lazy = true,
     opts = function(_, opts)
       opts.themes = {
         markdown = { colorscheme = "gruvbox" },
