@@ -15,8 +15,16 @@ return {
     name = "catppuccin",
     priority = 1000,
     opts = {
+      background = {
+        light = "latte",
+        dark = "mocha",
+      },
       integrations = {
+        aerial = true,
+        which_key = true,
         neogit = true,
+        neotree = true,
+        noice = true,
       },
       color_overrides = {
         mocha = {
@@ -27,6 +35,8 @@ return {
       },
     },
   },
+
+  { "rebelot/kanagawa.nvim" },
   {
     "folke/tokyonight.nvim",
     lazy = true,
@@ -56,6 +66,10 @@ return {
     "LazyVim/LazyVim",
     opts = {
       -- colorscheme = "moonbow",
+      -- colorscheme = "kanagawa",
+      -- colorscheme = "kanagawa-wave",
+      -- colorscheme = "kanagawa-dragon",
+      -- colorscheme = "kanagawa-lotus",
       colorscheme = "catppuccin",
     },
   },

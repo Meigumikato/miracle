@@ -19,12 +19,16 @@ local lazy_options = {
   spec = {
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- custom
+    -- { import = "lazyvim.plugins.extras.editor.navic" },
     { import = "ui" },
     { import = "langs.bash" },
     { import = "langs.cmake" },
     { import = "langs.clangd" },
     { import = "langs.go" },
     { import = "langs.python" },
+    { import = "langs.helm" },
+    { import = "langs.luals" },
+    -- { import = "plugins.lualine" },
 
     { import = "plugins" },
   },
