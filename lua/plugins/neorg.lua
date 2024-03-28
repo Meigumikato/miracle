@@ -3,7 +3,6 @@ return {
     "nvim-neorg/neorg",
     cmd = "Neorg",
     ft = "norg",
-    build = ":Neorg sync-parsers",
     opts = {
       load = {
         ["core.defaults"] = {}, -- Loads default behaviour
@@ -60,6 +59,11 @@ return {
       { "nvim-lua/plenary.nvim" },
       { "nvim-treesitter/nvim-treesitter" },
       { "nvim-neorg/neorg-telescope" },
+      {
+        "vhyrro/luarocks.nvim",
+        priority = 1000,
+        config = true,
+      },
     },
   },
   -- {

@@ -1,1 +1,21 @@
 require("config.lazy").load_config()
+
+-- local client = vim.lsp.start_client({
+--   name = "lspserver",
+--   cmd = { "/Users/bytedance/Projects/lspserver/target/debug/lspserver" },
+--   -- cmd = { "/Users/bytedance/Projects/educationalsp/main" },
+--   on_attach = require("lazyvim.plugins.lsp.keymaps").on_attach,
+-- })
+--
+-- if not client then
+--   vim.notify("lspserver start_client failed")
+--   return
+-- end
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "markdown",
+--   callback = function()
+--     vim.lsp.set_log_level("debug")
+--     -- require("lazyvim.plugins.lsp.keymaps").on_attach(client, 0)
+--     vim.lsp.buf_attach_client(0, client)
+--   end,
+-- })

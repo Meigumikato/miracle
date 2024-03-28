@@ -26,7 +26,7 @@ local lazy_options = {
     { import = "langs.clangd" },
     { import = "langs.go" },
     { import = "langs.python" },
-    { import = "langs.helm" },
+    -- { import = "langs.helm" },
     { import = "langs.luals" },
     -- { import = "plugins.lualine" },
 
