@@ -49,7 +49,24 @@ return {
         symbol_in_winbar = {
           enable = true,
         },
-        finder = {},
+        finder = {
+          max_height = 0.5,
+          left_width = 0.3,
+          right_withd = 0.3,
+          default = "ref+imp+def",
+          layout = "float",
+          silent = false,
+          keys = {
+            shuttle = "[w",
+            toggle_or_open = { "o", "<CR>" },
+            vsplit = "v",
+            split = "s",
+            tabe = "t",
+            tabnew = "r",
+            quit = { "q", "<ESC>" },
+            close = "<C-c>k",
+          },
+        },
         hover = {
           max_width = 0.8,
           max_height = 0.8,
@@ -88,7 +105,19 @@ return {
             quit = { "q", "<ESC>" },
           },
         },
-        callhierarchy = {},
+        callhierarchy = {
+          layout = "float",
+          keys = {
+            edit = "e",
+            vsplit = "v",
+            split = "s",
+            tabe = "t",
+            quit = { "q", "<ESC>" },
+            shuttle = "[w",
+            toggle_or_req = "u",
+            close = "<C-c>k",
+          },
+        },
       })
     end,
     dependencies = {
