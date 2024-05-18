@@ -36,7 +36,7 @@ return {
     },
   },
 
-  { "rebelot/kanagawa.nvim" },
+  { "rebelot/kanagawa.nvim", lazy = true, priority = 1000 },
   {
     "folke/tokyonight.nvim",
     lazy = true,
@@ -66,11 +66,11 @@ return {
     "LazyVim/LazyVim",
     opts = {
       -- colorscheme = "moonbow",
-      -- colorscheme = "kanagawa",
+      colorscheme = "tokyonight",
       -- colorscheme = "kanagawa-wave",
       -- colorscheme = "kanagawa-dragon",
       -- colorscheme = "kanagawa-lotus",
-      colorscheme = "catppuccin",
+      -- colorscheme = "catppuccin",
     },
   },
 }

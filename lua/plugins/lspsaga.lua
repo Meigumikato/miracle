@@ -10,8 +10,8 @@ return {
       -- disable a keymap
       keys[#keys + 1] = { "gr", "<cmd>Lspsaga finder ref<cr>", desc = "Find reference" }
       keys[#keys + 1] = { "gd", "<cmd>Lspsaga goto_definition<cr>", desc = "Goto definition" }
-      keys[#keys + 1] = { "<leader>ci", "<cmd>Lspsaga incoming_calls<cr>", desc = "Incoming calls" }
-      keys[#keys + 1] = { "<leader>co", "<cmd>Lspsaga outgoing_calls<cr>", desc = "Outgoing calls" }
+      keys[#keys + 1] = { "<leader>chi", "<cmd>Lspsaga incoming_calls<cr>", desc = "Incoming calls" }
+      keys[#keys + 1] = { "<leader>cho", "<cmd>Lspsaga outgoing_calls<cr>", desc = "Outgoing calls" }
       keys[#keys + 1] = { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "code action" }
       keys[#keys + 1] = { "<leader>cr", "<cmd>Lspsaga rename<cr>" }
       keys[#keys + 1] = {
@@ -67,6 +67,13 @@ return {
             close = "<C-c>k",
           },
         },
+        lightbulb = {
+          enable = true,
+          sign = false,
+          virtual_text = true,
+          debounce = 10,
+          sign_priority = 40,
+        },
         hover = {
           max_width = 0.8,
           max_height = 0.8,
@@ -78,7 +85,7 @@ return {
           show_server_name = false,
           extend_gitsigns = true,
           keys = {
-            quit = "q",
+            quit = { "q", "<ESC>" },
             exec = "<CR>",
           },
         },

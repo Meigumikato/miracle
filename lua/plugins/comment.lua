@@ -1,5 +1,5 @@
 return {
-  { "nvim-neotest/nvim-nio" },
+  -- { "nvim-neotest/nvim-nio" },
   -- {
   --   "echasnovski/mini.comment",
   --   event = "VeryLazy",

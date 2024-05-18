@@ -1,71 +1,32 @@
 return {
+  { "folke/zen-mode.nvim", cmd = "ZenMode" },
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+  },
   {
     "nvim-neorg/neorg",
-    cmd = "Neorg",
     ft = "norg",
+    dependencies = { "vhyrro/luarocks.nvim" },
+    lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+    version = "*", -- Pin Neorg to the latest stable release
     opts = {
       load = {
         ["core.defaults"] = {}, -- Loads default behaviour
-        -- ["core.ui.calendar"] = {},
-        ["core.export"] = {},
-        ["core.export.markdown"] = {},
-        ["core.concealer"] = {
-          config = {
-            -- icon_preset = "diamond",
-          },
-        }, -- Adds pretty icons to your documents
-        ["core.completion"] = {
-          config = {
-            engine = "nvim-cmp",
-            -- name = "[Norg]",
-          },
-        },
-        ["core.esupports.metagen"] = {
-          config = {
-            -- type = "auto",
-            -- update_date = true,
-          },
-        },
-        ["core.keybinds"] = {
-          config = {
-            default_keybinds = true,
-            neorg_leader = "<Leader>n",
-          },
-        },
-        ["core.journal"] = {
-          config = {
-            workspace = "notes",
-          },
-        },
-        ["core.presenter"] = {
-          config = {
-            zen_mode = "zen-mode",
-          },
-        },
-        ["core.summary"] = {},
+        ["core.concealer"] = {}, -- Adds pretty icons to your documents
         ["core.dirman"] = { -- Manages Neorg workspaces
           config = {
             workspaces = {
               notes = "~/Notes",
-              works = "~/Works",
             },
+            default_workspace = "notes",
           },
         },
-
-        ["core.integrations.telescope"] = {},
-      },
-    },
-    dependencies = {
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-treesitter/nvim-treesitter" },
-      { "nvim-neorg/neorg-telescope" },
-      {
-        "vhyrro/luarocks.nvim",
-        priority = 1000,
-        config = true,
       },
     },
   },
+
   -- {
   --   "lukas-reineke/headlines.nvim",
   --   ft = "norg",
