@@ -9,7 +9,8 @@ return {
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       -- disable a keymap
       keys[#keys + 1] = { "gr", "<cmd>Lspsaga finder ref<cr>", desc = "Find reference" }
-      keys[#keys + 1] = { "gd", "<cmd>Lspsaga goto_definition<cr>", desc = "Goto definition" }
+      keys[#keys + 1] = { "gd", "<cmd>Lspsaga goto_definition<cr>", desc = "lspsaga Goto definition" }
+      keys[#keys + 1] = { "gD", "<cmd>Lspsaga goto_type_definition<cr>", desc = "lspsaga Goto declaration" }
       keys[#keys + 1] = { "<leader>chi", "<cmd>Lspsaga incoming_calls<cr>", desc = "Incoming calls" }
       keys[#keys + 1] = { "<leader>cho", "<cmd>Lspsaga outgoing_calls<cr>", desc = "Outgoing calls" }
       keys[#keys + 1] = { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "code action" }
