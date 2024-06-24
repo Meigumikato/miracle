@@ -15,6 +15,8 @@ return {
       keys[#keys + 1] = { "<leader>cho", "<cmd>Lspsaga outgoing_calls<cr>", desc = "Outgoing calls" }
       keys[#keys + 1] = { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "code action" }
       keys[#keys + 1] = { "<leader>cr", "<cmd>Lspsaga rename<cr>" }
+      keys[#keys + 1] = { "<leader>cp", "<cmd>Lspsaga peek_definition<cr>" }
+      keys[#keys + 1] = { "<leader>cP", "<cmd>Lspsaga peek_type_definition<cr>" }
       keys[#keys + 1] = {
         "]e",
         function()
@@ -75,6 +77,13 @@ return {
           debounce = 10,
           sign_priority = 40,
         },
+        definition = {
+          keys = {
+            edit = "<C-c>o",
+            vsplit = "<C-c>v",
+          },
+        },
+
         hover = {
           max_width = 0.8,
           max_height = 0.8,
