@@ -9,7 +9,7 @@ return {
             Lua = {
               workspace = {
                 library = {
-                  "~/Code/freeswitch_lua/",
+                  "/Users/bytedance/Code/freeswitch_lua/completion/",
                 },
               },
             },

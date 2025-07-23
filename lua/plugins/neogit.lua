@@ -12,6 +12,10 @@ return {
       },
     },
     cmd = "Neogit",
-    dependencies = "nvim-lua/plenary.nvim",
+    dependencies = {
+      "sindrets/diffview.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
   },
 }
