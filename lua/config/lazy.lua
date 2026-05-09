@@ -1,68 +1,29 @@
-local M = {}
-
-local function load_lazy()
-  local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-  if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-      "git",
-      "clone",
-      "--filter=blob:none",
-      "https://github.com/folke/lazy.nvim.git",
-      "--branch=stable",
-      lazypath,
-    })
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
   end
-  vim.opt.runtimepath:prepend(lazypath)
 end
 
-local lazy_options = {
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
   spec = {
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    { import = "lazyvim.plugins.extras.ui.dashboard" },
-
-    -- { import = "lazyvim.plugins.extras.coding.copilot" },
-
-    { import = "lazyvim.plugins.extras.dap.core" },
-    { import = "lazyvim.plugins.extras.dap.nlua" },
-
-    { import = "lazyvim.plugins.extras.util.project" },
-    { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
-
-    { import = "lazyvim.plugins.extras.test.core" },
-
-    { import = "lazyvim.plugins.extras.linting.eslint" },
-
-    { import = "lazyvim.plugins.extras.formatting.prettier" },
-
-    { import = "lazyvim.plugins.extras.lang.docker" },
-    { import = "lazyvim.plugins.extras.lang.python" },
-    { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.lang.typescript" },
-    { import = "lazyvim.plugins.extras.lang.clangd" },
-    { import = "lazyvim.plugins.extras.lang.cmake" },
-    { import = "lazyvim.plugins.extras.lang.go" },
-    { import = "lazyvim.plugins.extras.lang.rust" },
-    { import = "lazyvim.plugins.extras.lang.yaml" },
-
-    -- { import = "lazyvim.plugins.extras.ui.edgy" },
-
-    { import = "lazyvim.plugins.extras.editor.mini-files" },
-
-    { import = "lazyvim.plugins.extras.coding.yanky" },
-
-    -- custom
-    { import = "ui" },
-    { import = "langs.bash" },
-    { import = "langs.cmake" },
-    { import = "langs.clangd" },
-    { import = "langs.go" },
-    { import = "langs.python" },
-
     { import = "plugins" },
+    { import = "langs" },
   },
   defaults = { lazy = false, version = false },
-  install = { colorscheme = { "tokyonight" } },
-  checker = { enabled = true },
+  install = { colorscheme = { "tokyonight", "habamax" } },
+  checker = { enabled = true, notify = false },
   performance = {
     rtp = {
       disabled_plugins = {
@@ -74,12 +35,4 @@ local lazy_options = {
       },
     },
   },
-}
-
-function M.load_config()
-  load_lazy()
-
-  require("lazy").setup(lazy_options)
-end
-
-return M
+})

@@ -1,18 +1,7 @@
 return {
   {
     "sindrets/diffview.nvim",
-    cmd = {
-      "DiffviewOpen",
-      "DiffviewClose",
-      "DiffviewFileHistory",
-      "DiffviewToggleFiles",
-      "DiffviewFocusFiles",
-      "DiffviewRefresh",
-    },
-    -- config = function()
-    --   require("diffview").setup({})
-    -- end,
-    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = "DiffviewOpen",
   },
   {
     "NeogitOrg/neogit",
@@ -23,6 +12,10 @@ return {
       },
     },
     cmd = "Neogit",
-    dependencies = "nvim-lua/plenary.nvim",
+    dependencies = {
+      "sindrets/diffview.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
   },
 }
