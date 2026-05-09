@@ -3,9 +3,7 @@ return {
     "folke/which-key.nvim",
     opts = {
       spec = {
-        {
-          { "<leader>fm", group = "oil" },
-        },
+        { "<leader>fo", group = "oil" },
       },
     },
   },
@@ -14,8 +12,10 @@ return {
     opts = function(_, opts)
       local detail = false
       opts.delete_to_trash = true
+      opts.view_options = { show_hidden = true }
       opts.keymaps = {
-        ["q"] = { "actions.close", desc = "Close oil and restore original buffer" },
+        ["q"] = { "actions.close", desc = "Close oil" },
+        ["<C-h>"] = false,
         ["gd"] = {
           desc = "Toggle file detail view",
           callback = function()
@@ -30,15 +30,20 @@ return {
       }
     end,
     keys = {
-
       {
-        "<leader>fmo",
+        "<leader>fo",
         function()
           require("oil").open_float()
         end,
-        desc = "Open Oil file manager",
+        desc = "Open Oil (float)",
+      },
+      {
+        "-",
+        function()
+          require("oil").open()
+        end,
+        desc = "Open parent directory",
       },
     },
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
   },
 }
