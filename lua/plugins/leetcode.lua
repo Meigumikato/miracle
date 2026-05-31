@@ -19,14 +19,21 @@ return {
       { "<leader>zc", "<cmd>Leet console<cr>", desc = "LeetCode Console" },
     },
     dependencies = {
-      "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim", "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-treesitter/nvim-treesitter",
     },
     opts = {
       storage = { home = "~/Projects/algorithm/problems" },
+      cn = { -- leetcode.cn
+        enabled = true, ---@type boolean
+        translator = false, ---@type boolean
+        translate_problems = false, ---@type boolean
+      },
       injector = {
         ["cpp"] = {
-          before = { [[#include <bits/stdc++.h>]], [[using namespace std;]] },
+          -- before = { [[#include <bits/stdc++.h>]], [[using namespace std;]] },
           after = "int main(int argc, char** argv) {\n return 0;\n }",
         },
       },
